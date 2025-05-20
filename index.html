@@ -71,75 +71,68 @@
   </div>
 
   <script>
-    // Mostrar contenido al hacer clic
-    document.getElementById('abrir-carta').addEventListener('click', function () {
-      document.getElementById('carta').classList.add('abierta');
-    });
+  // Mostrar contenido al hacer clic
+  document.getElementById('abrir-carta').addEventListener('click', function () {
+    document.getElementById('carta').classList.add('abierta');
+  });
 
-    // Cuenta atrás
-    const fechaBoda = new Date('2025-10-04T13:00:00').getTime();
-    const contadorEl = document.getElementById('contador');
+  // Cuenta atrás
+  const fechaBoda = new Date('2025-10-04T13:00:00').getTime();
+  const contadorEl = document.getElementById('contador');
 
-    function actualizarCuentaAtras() {
-      const ahora = new Date().getTime();
-      const diferencia = fechaBoda - ahora;
+  function actualizarCuentaAtras() {
+    const ahora = new Date().getTime();
+    const diferencia = fechaBoda - ahora;
 
-      if (diferencia <= 0) {
-        contadorEl.innerText = "¡Ya es el gran día!";
-        clearInterval(intervalo);
-        return;
-      }
-
-      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-      contadorEl.innerText = `${dias} días, ${horas}h, ${minutos}m, ${segundos}s`;
+    if (diferencia <= 0) {
+      contadorEl.innerText = "¡Ya es el gran día!";
+      clearInterval(intervalo);
+      return;
     }
 
-    const intervalo = setInterval(actualizarCuentaAtras, 1000);
-    actualizarCuentaAtras();
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
-    // Enviar datos del formulario a Google Sheets
-    const formulario = document.getElementById("RSVP-BODA");
+    contadorEl.innerText = `${dias} días, ${horas}h, ${minutos}m, ${segundos}s`;
+  }
 
-    formulario.addEventListener("submit", async function (e) {
-      e.preventDefault();
-      
-      const nombre = document.getElementById("nombre").value.trim();
-      const asistencia = document.getElementById("asistencia").value;
+  const intervalo = setInterval(actualizarCuentaAtras, 1000);
+  actualizarCuentaAtras();
 
-      if (!nombre || !asistencia) {
-        alert("Por favor, completa todos los campos.");
-        return;
-      }
+  // Envío del formulario
+  document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      try {
-        const respuesta = await fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            nombre: nombre,
-            asistencia: asistencia,
-          }),
-        });
+    const nombre = document.getElementById("nombre").value;
+    const asistencia = document.getElementById("asistencia").value;
 
-        const resultado = await respuesta.json();
-
-        if (resultado.status === "ok") {
+    fetch("URL_DE_TU_WEB_APP", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ nombre, asistencia }),
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("Error en la red");
+        return response.json();
+      })
+      .then((data) => {
+        if (data.success) {
           alert("¡Gracias por confirmar tu asistencia!");
-          formulario.reset();
+          document.getElementById("formulario-rsvp").reset();
         } else {
           alert("Error al enviar. Inténtalo de nuevo.");
         }
-      } catch (error) {
-        console.error("Error al enviar:", error);
-        alert("Hubo un error al enviar el formulario.");
-      }
-    });
-  </script>
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("Hubo un problema al enviar tu confirmación.");
+      });
+  });
+</script>
+
 </body>
 </html>
