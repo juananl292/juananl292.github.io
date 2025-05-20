@@ -3,101 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nuestra Boda - Marta & Luis</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>¡Nos Casamos!</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Vista inicial con la carta -->
-  <div id="carta" class="pantalla">
-    <div id="sobre" class="sobre">
-      <h1>Estás invitado</h1>
-      <p>¡Nos casamos!</p>
-      <button onclick="abrirCarta()">Abrir</button>
+  <div class="carta">
+    <div class="portada">
+      <h1>Una carta para ti...</h1>
+      <button id="abrir-carta">Abrir</button>
     </div>
-  </div>
+    <div class="contenido" style="display: none;">
+      <header>
+        <h1>Juanan & Gema</h1>
+        <p>¡Nos casamos!</p>
+      </header>
 
-  <!-- Contenido de la boda -->
-  <div id="contenido" class="pantalla oculto">
-    <header>
-      <h1>Marta & Luis</h1>
-      <p>¡Nos casamos!</p>
-    </header>
+      <section class="separador">
+        <h2>Cuenta atrás</h2>
+        <p id="contador">Cargando...</p>
+      </section>
 
-    <!-- Cuenta regresiva -->
-    <section id="cuenta-regresiva">
-      <h2>Faltan</h2>
-      <div id="contador">
-        <span id="dias">0</span> días
-        <span id="horas">0</span> horas
-        <span id="minutos">0</span> minutos
-        <span id="segundos">0</span> segundos
-      </div>
-    </section>
+      <section class="separador">
+        <h2>Información del evento</h2>
+        <p><strong>Cuándo:</strong> 20 de septiembre de 2025, 13:00h</p>
+        <p><strong>Dónde:</strong> Hacienda Los Molinos, Córdoba</p>
+      </section>
 
-    <!-- Detalles del evento -->
-    <section>
-      <h2>Detalles del evento</h2>
-      <p><strong>Fecha:</strong> 15 de agosto de 2025</p>
-      <p><strong>Hora:</strong> 17:00</p>
-      <p><strong>Lugar:</strong> Jardín de los Sueños, Madrid</p>
-    </section>
+      <section class="separador">
+        <h2>¿Cómo llegar?</h2>
+        <div class="mapa">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.965546310768!2d-4.780104784738353!3d37.884731279733065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6cdfab4f9f5e2d%3A0x634d67a6782499f2!2sHacienda%20Los%20Molinos!5e0!3m2!1ses!2ses!4v1716220485172!5m2!1ses!2ses"
+            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+          ></iframe>
+        </div>
+      </section>
 
-    <!-- Mapa del lugar -->
-    <section>
-      <h2>¿Cómo llegar?</h2>
-      <div id="mapa">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.123456789!2d-3.703790!3d40.416775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4229978f123456%3A0xabcdef1234567890!2sJard%C3%ADn%20de%20los%20Sue%C3%B1os!5e0!3m2!1ses!2ses!4v1610000000000!5m2!1ses!2ses"
-          width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
-        </iframe>
-      </div>
-    </section>
+      <section class="separador">
+        <h2>Momentos especiales</h2>
+        <div class="galeria">
+          <img src="img/foto1.jpg" alt="Nosotros 1" />
+          <img src="img/foto2.jpg" alt="Nosotros 2" />
+          <img src="img/foto3.jpg" alt="Nosotros 3" />
+        </div>
+      </section>
 
-    <!-- Historia de la pareja -->
-    <section>
-      <h2>Nuestra historia</h2>
-      <p>Nos conocimos en la universidad y desde entonces hemos compartido innumerables momentos juntos. Ahora, estamos emocionados de comenzar este nuevo capítulo en nuestras vidas.</p>
-    </section>
-
-    <!-- Galería de fotos -->
-    <section>
-      <h2>Galería</h2>
-      <div class="galeria">
-        <img src="fotos/foto1.jpg" alt="Foto 1">
-        <img src="fotos/foto2.jpg" alt="Foto 2">
-        <img src="fotos/foto3.jpg" alt="Foto 3">
-        <!-- Añade más imágenes según sea necesario -->
-      </div>
-    </section>
-
-    <!-- Lista de regalos -->
-    <section>
-      <h2>Lista de regalos</h2>
-      <p>Si deseas hacernos un regalo, puedes consultar nuestra lista en el siguiente enlace:</p>
-      <p><a href="https://www.ejemplodelista.com/martayluis" target="_blank">Lista de regalos</a></p>
-    </section>
-
-    <!-- Confirmación de asistencia -->
-    <section>
-      <h2>Confirma tu asistencia</h2>
-      <form id="formulario-rsvp">
-        <label for="nombre">Nombre:</label><br>
-        <input type="text" id="nombre" name="nombre" required><br><br>
-        <label for="asistencia">¿Asistirás?</label><br>
-        <select id="asistencia" name="asistencia" required>
-          <option value="">Selecciona una opción</option>
-          <option value="sí">Sí</option>
-          <option value="no">No</option>
-        </select><br><br>
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
-
-    <footer>
-      <p>Con cariño, Marta y Luis</p>
-    </footer>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
+      <section class="separador">
+        <h2>Confirmación de asistencia</h2>
+        <form id="formulario-rsvp">
+          <label for="nombre">Tu nombre:</label>
+          <input type="text" id="nombre" name="nombre" required />
+          <label for="asistencia">¿Vas a venir?</label>
+          <select id="asistencia" name="asistencia" required>
+            <option value="">Selecciona una opción</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+          </select>
+          <button type="submit">Enviar</button>
