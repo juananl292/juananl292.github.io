@@ -1,161 +1,137 @@
-/* Colores base */
-:root {
-  --verde-olivo: #556b2f;
-  --blanco: #ffffff;
-  --gris-claro: #f2f2f2;
-  --sombra: rgba(0, 0, 0, 0.1);
-}
-
+/* Estilos generales */
 body {
   margin: 0;
-  padding: 0;
   font-family: 'Georgia', serif;
-  background-color: var(--blanco);
-  color: #333;
+  background-color: #fefefe;
+  color: #3d3d3d;
+  background-color: #f5f9f5;
 }
 
-/* Centrado de la carta */
+/* Carta centrada */
 .carta {
-  width: 100%;
-  min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background-color: var(--gris-claro);
-  transition: transform 1s ease;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  transition: all 0.8s ease;
 }
 
+/* Portada inicial */
 .portada {
+  background-color: #e8f0e4;
+  border: 2px solid #a3b18a;
+  padding: 2rem;
   text-align: center;
-  background-color: var(--verde-olivo);
-  color: var(--blanco);
-  padding: 40px 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px var(--sombra);
-  max-width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
 }
 
-#abrir-carta {
-  margin-top: 20px;
-  padding: 12px 24px;
-  font-size: 1.1em;
-  background-color: var(--blanco);
-  color: var(--verde-olivo);
-  border: 2px solid var(--blanco);
+.portada h1 {
+  margin-bottom: 1rem;
+}
+
+.portada button {
+  background-color: #a3b18a;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
-#abrir-carta:hover {
-  background-color: #e7e7e7;
+.portada button:hover {
+  background-color: #6b8e63;
 }
 
-/* Animación de apertura */
-.carta.abierta {
-  transform: rotateY(180deg);
-}
-
-/* Contenido interior */
+/* Contenido (inicialmente oculto) */
 .contenido {
-  background-color: var(--blanco);
-  padding: 30px 15px;
-  max-width: 800px;
-  margin: auto;
   display: none;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+  animation: fadeIn 1s ease-in-out;
 }
 
-header {
-  text-align: center;
-  margin-bottom: 20px;
+.contenido header,
+.contenido section,
+.contenido footer {
+  margin-bottom: 2rem;
 }
 
-header h1 {
-  color: var(--verde-olivo);
-  font-size: 2em;
-  margin-bottom: 5px;
+h1, h2 {
+  color: #5a7d55;
 }
 
 .separador {
-  border-top: 2px solid var(--verde-olivo);
-  padding: 20px 0;
-  margin: 20px 0;
-}
-
-#contador {
-  font-size: 1.4em;
-  font-weight: bold;
-  text-align: center;
-}
-
-.mapa iframe {
-  border-radius: 12px;
-  width: 100%;
-  height: 250px;
-  border: none;
+  border-top: 1px solid #d0d0d0;
+  padding-top: 1rem;
+  margin-top: 2rem;
 }
 
 /* Galería */
 .galeria {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
+  gap: 1rem;
+  overflow-x: auto;
 }
 
 .galeria img {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px var(--sombra);
+  width: 100%;
+  max-width: 180px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Formulario */
 form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 1rem;
 }
 
-input, select, button {
-  padding: 10px;
-  font-size: 1em;
-  border-radius: 6px;
+input, select, button[type="submit"] {
+  padding: 0.75rem;
   border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
 }
 
 button[type="submit"] {
-  background-color: var(--verde-olivo);
-  color: var(--blanco);
+  background-color: #a3b18a;
+  color: white;
   border: none;
   cursor: pointer;
-  transition: background 0.3s ease;
 }
 
 button[type="submit"]:hover {
-  background-color: #6b8e23;
+  background-color: #6b8e63;
 }
 
-footer {
-  text-align: center;
-  margin-top: 30px;
-  font-size: 0.9em;
-  color: #666;
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Responsive */
 @media (max-width: 600px) {
-  .galeria img {
-    width: 80px;
-    height: 80px;
-  }
-
   .contenido {
-    padding: 20px 10px;
+    padding: 1rem;
   }
 
-  header h1 {
-    font-size: 1.6em;
+  .galeria {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .galeria img {
+    max-width: 90%;
   }
 }
