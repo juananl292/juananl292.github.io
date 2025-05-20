@@ -102,7 +102,7 @@
     actualizarCuentaAtras();
 
     // Enviar datos del formulario a Google Sheets
-    const formulario = document.getElementById("formulario-rsvp");
+    const formulario = document.getElementById("RSVP-BODA");
 
     formulario.addEventListener("submit", async function (e) {
       e.preventDefault();
@@ -116,7 +116,7 @@
       }
 
       try {
-        const respuesta = await fetch("TU_URL_DEL_WEBAPP", {
+        const respuesta = await fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
