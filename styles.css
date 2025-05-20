@@ -6,14 +6,24 @@ body {
   color: #3d3d3d;
 }
 
-/* Carta centrada */
+/* Carta: comportamiento cerrado y abierto */
 .carta {
+  flex-direction: column;
+  transition: all 0.8s ease;
+}
+
+/* Carta cerrada (centrada en pantalla) */
+.carta:not(.abierta) {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  flex-direction: column;
-  transition: all 0.8s ease;
+}
+
+/* Carta abierta (contenido completo visible) */
+.carta.abierta {
+  display: block;
+  height: auto;
 }
 
 /* Portada inicial */
