@@ -1,50 +1,69 @@
-function abrirCarta() {
-  const sobre = document.getElementById("sobre");
-  sobre.classList.add("animar-sobre");
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec";
 
-  setTimeout(() => {
-    document.getElementById("carta").classList.add("oculto");
-    document.getElementById("contenido").classList.remove("oculto");
-  }, 1000);
-}
+document.addEventListener("DOMContentLoaded", function () {
+  // Manejar animación de la carta
+  const abrirBtn = document.getElementById("abrir-carta");
+  const carta = document.querySelector(".carta");
+  const portada = document.querySelector(".portada");
+  const contenido = document.querySelector(".contenido");
 
-// Cuenta regresiva
-const fechaBoda = new Date("August 15, 2025 17:00:00").getTime();
+  abrirBtn.addEventListener("click", () => {
+    carta.classList.add("abierta");
+    setTimeout(() => {
+      portada.style.display = "none";
+      contenido.style.display = "block";
+    }, 1000); // tiempo igual al de la animación CSS
+  });
 
-function actualizarContador() {
-  const ahora = new Date().getTime();
-  const diferencia = fechaBoda - ahora;
+  // Manejar envío del formulario RSVP
+  const form = document.getElementById("formulario-rsvp");
 
-  if (diferencia < 0) {
-    document.getElementById("contador").innerHTML = "¡Ya estamos casados!";
-    return;
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const nombre = document.getElementById("nombre").value.trim();
+      const asistencia = document.getElementById("asistencia").value;
+
+      if (!nombre || !asistencia) {
+        alert("Por favor, completa todos los campos.");
+        return;
+      }
+
+      fetch(ENDPOINT, {
+        method: "POST",
+        body: JSON.stringify({ nombre, asistencia }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then(() => {
+          alert(`Gracias, ${nombre}. Tu confirmación ha sido enviada.`);
+          form.reset();
+        })
+        .catch((err) => {
+          alert("Hubo un error al enviar tu confirmación. Intenta de nuevo.");
+          console.error(err);
+        });
+    });
   }
 
-  const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-  const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-  const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+  // Contador regresivo
+  const contador = document.getElementById("contador");
+  if (contador) {
+    const fechaBoda = new Date("2025-09-20T13:00:00").getTime();
 
-  document.getElementById("dias").textContent = dias;
-  document.getElementById("horas").textContent = horas;
-  document.getElementById("minutos").textContent = minutos;
-  document.getElementById("segundos").textContent = segundos;
-}
+    setInterval(() => {
+      const ahora = new Date().getTime();
+      const distancia = fechaBoda - ahora;
 
-// Actualizar cada segundo
-setInterval(actualizarContador, 1000);
-actualizarContador();
+      const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
 
-// Confirmación de asistencia (RSVP)
-document.getElementById("formulario-rsvp").addEventListener("submit", function(e) {
-  e.preventDefault();
-  const nombre = document.getElementById("nombre").value.trim();
-  const asistencia = document.getElementById("asistencia").value;
-
-  if (nombre && asistencia) {
-    alert(`Gracias, ${nombre}. Hemos registrado tu respuesta: "${asistencia.toUpperCase()}"`);
-    this.reset();
-  } else {
-    alert("Por favor, completa todos los campos.");
+      contador.innerHTML = `${dias} días, ${horas}h, ${minutos}m, ${segundos}s`;
+    }, 1000);
   }
 });
