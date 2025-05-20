@@ -1,11 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuestra Boda</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <a href="">hello world</a>
+  <!-- Vista inicial con la carta -->
+  <div id="carta" class="pantalla">
+    <div id="sobre" class="sobre">
+      <h1>Estás invitado</h1>
+      <p>¡Nos casamos!</p>
+      <button onclick="abrirCarta()">Abrir</button>
+    </div>
+  </div>
+
+  <!-- Contenido de la boda -->
+  <div id="contenido" class="pantalla oculto">
+    <header>
+      <h1>Marta & Luis</h1>
+      <p>¡Nos casamos!</p>
+    </header>
+
+    <section>
+      <h2>Detalles del evento</h2>
+      <p><strong>Fecha:</strong> 15 de agosto de 2025</p>
+      <p><strong>Lugar:</strong> Jardín de los Sueños, Madrid</p>
+    </section>
+
+    <section>
+      <h2>Confirma tu asistencia</h2>
+      <button onclick="confirmarAsistencia()">Confirmar</button>
+    </section>
+
+    <footer>
+      <p>Con cariño, Marta y Luis</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
