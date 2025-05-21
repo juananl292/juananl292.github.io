@@ -106,7 +106,7 @@
   const intervalo = setInterval(actualizarCuentaAtras, 1000);
   actualizarCuentaAtras();
 
-  // Envío del formulario corregido
+  // Envío del formulario (modo no-cors)
   document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -114,33 +114,27 @@
     const asistencia = document.getElementById("asistencia").value;
     const alergias = document.getElementById("alergias").value;
 
-    const formData = new URLSearchParams();
+    const formData = new FormData();
     formData.append("nombre", nombre);
     formData.append("asistencia", asistencia);
     formData.append("alergias", alergias);
 
     fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      body: formData.toString()
+      mode: "no-cors",
+      body: formData
     })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          alert("¡Gracias por confirmar tu asistencia!");
-          document.getElementById("formulario-rsvp").reset();
-        } else {
-          alert("Hubo un problema al enviar. Inténtalo más tarde.");
-        }
-      })
-      .catch(error => {
-        console.error("Error:", error);
-        alert("Error al enviar. Inténtalo más tarde.");
-      });
+    .then(() => {
+      alert("¡Gracias por confirmar tu asistencia!");
+      document.getElementById("formulario-rsvp").reset();
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      alert("No se pudo enviar. Inténtalo más tarde.");
+    });
   });
 </script>
+
 
 </body>
 </html>
