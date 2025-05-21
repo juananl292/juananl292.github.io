@@ -73,7 +73,7 @@
   </div>
 
   <script>
-    // Mostrar contenido al hacer clic
+    // Animación de apertura
     document.getElementById('abrir-carta').addEventListener('click', function () {
       document.getElementById('carta').classList.add('abierta');
     });
@@ -103,7 +103,7 @@
     const intervalo = setInterval(actualizarCuentaAtras, 1000);
     actualizarCuentaAtras();
 
-    // Envío del formulario usando URL-encoded (para evitar CORS)
+    // Enviar formulario
     document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
       e.preventDefault();
 
@@ -116,15 +116,16 @@
 
       fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
         method: "POST",
-        body: formData,
+        body: formData
       })
-      .then(() => {
+      .then(response => response.text())
+      .then(data => {
         alert("¡Gracias por confirmar tu asistencia!");
         document.getElementById("formulario-rsvp").reset();
       })
-      .catch((error) => {
+      .catch(error => {
         console.error("Error:", error);
-        alert("Hubo un problema al enviar tu confirmación.");
+        alert("Error al enviar. Inténtalo de nuevo.");
       });
     });
   </script>
