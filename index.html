@@ -73,69 +73,60 @@
   </div>
 
   <script>
-// Mostrar contenido al hacer clic
-document.getElementById('abrir-carta').addEventListener('click', function () {
-  document.getElementById('carta').classList.add('abierta');
-});
+    // Mostrar contenido al hacer clic
+    document.getElementById('abrir-carta').addEventListener('click', function () {
+      document.getElementById('carta').classList.add('abierta');
+    });
 
-// Cuenta atrás
-const fechaBoda = new Date('2025-10-04T13:00:00').getTime();
-const contadorEl = document.getElementById('contador');
+    // Cuenta atrás
+    const fechaBoda = new Date('2025-10-04T13:00:00').getTime();
+    const contadorEl = document.getElementById('contador');
 
-function actualizarCuentaAtras() {
-  const ahora = new Date().getTime();
-  const diferencia = fechaBoda - ahora;
+    function actualizarCuentaAtras() {
+      const ahora = new Date().getTime();
+      const diferencia = fechaBoda - ahora;
 
-  if (diferencia <= 0) {
-    contadorEl.innerText = "¡Ya es el gran día!";
-    clearInterval(intervalo);
-    return;
-  }
+      if (diferencia <= 0) {
+        contadorEl.innerText = "¡Ya es el gran día!";
+        clearInterval(intervalo);
+        return;
+      }
 
-  const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-  const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-  const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
-  contadorEl.innerText = `${dias} días, ${horas}h, ${minutos}m, ${segundos}s`;
-}
-
-const intervalo = setInterval(actualizarCuentaAtras, 1000);
-actualizarCuentaAtras();
-
-// Envío del formulario sin campo de alergias
-document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const nombre = document.getElementById("nombre").value;
-  const asistencia = document.getElementById("asistencia").value;
-
-  fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      nombre,
-      asistencia
-    })
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.success) {
-      alert("¡Gracias por confirmar tu asistencia!");
-      document.getElementById("formulario-rsvp").reset();
-    } else {
-      alert("Error al enviar. Inténtalo de nuevo.");
+      contadorEl.innerText = `${dias} días, ${horas}h, ${minutos}m, ${segundos}s`;
     }
-  })
-  .catch(error => {
-    console.error("Error:", error);
-    alert("Hubo un problema al enviar tu confirmación.");
-  });
-});
-</script>
 
+    const intervalo = setInterval(actualizarCuentaAtras, 1000);
+    actualizarCuentaAtras();
 
+    // Envío del formulario usando URL-encoded (para evitar CORS)
+    document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const nombre = document.getElementById("nombre").value;
+      const asistencia = document.getElementById("asistencia").value;
+
+      const formData = new URLSearchParams();
+      formData.append("nombre", nombre);
+      formData.append("asistencia", asistencia);
+
+      fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
+        method: "POST",
+        body: formData,
+      })
+      .then(() => {
+        alert("¡Gracias por confirmar tu asistencia!");
+        document.getElementById("formulario-rsvp").reset();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("Hubo un problema al enviar tu confirmación.");
+      });
+    });
+  </script>
 </body>
 </html>
