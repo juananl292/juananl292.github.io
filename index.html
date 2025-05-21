@@ -15,7 +15,7 @@
 
     <div class="contenido">
       <header>
-        <h1>Juanan & Gema</h1>
+        <h1>Juan & Gema</h1>
         <p>¡Nos casamos!</p>
       </header>
 
@@ -62,8 +62,8 @@
             <option value="No">No</option>
           </select>
 
-          <label for="alergias">¿Tienes alguna alergia o intolerancia alimentaria?</label>
-          <textarea id="alergias" name="alergias" placeholder="Indica aquí tus intolerancias o deja en blanco si no tienes."></textarea>
+          <label for="alergias">¿Tienes alguna intolerancia o alergia alimentaria?</label>
+          <input type="text" id="alergias" name="alergias" placeholder="Ej: gluten, lactosa..." />
 
           <button type="submit">Enviar</button>
         </form>
@@ -106,7 +106,7 @@
     const intervalo = setInterval(actualizarCuentaAtras, 1000);
     actualizarCuentaAtras();
 
-    // Envío del formulario
+    // Envío del formulario (usando FormData)
     document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
       e.preventDefault();
 
@@ -114,13 +114,15 @@
       const asistencia = document.getElementById("asistencia").value;
       const alergias = document.getElementById("alergias").value;
 
+      const formData = new FormData();
+      formData.append("nombre", nombre);
+      formData.append("asistencia", asistencia);
+      formData.append("alergias", alergias);
+
       fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
         method: "POST",
         mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ nombre, asistencia, alergias }),
+        body: formData
       });
 
       alert("¡Gracias por confirmar tu asistencia!");
