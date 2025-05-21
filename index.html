@@ -70,7 +70,7 @@
     </div>
   </div>
 
-  <script>
+ <script>
   // Mostrar contenido al hacer clic
   document.getElementById('abrir-carta').addEventListener('click', function () {
     document.getElementById('carta').classList.add('abierta');
@@ -110,29 +110,24 @@
 
     fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
       method: "POST",
+      mode: "no-cors", // <- agregado para evitar bloqueo por CORS
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ nombre, asistencia }),
     })
-      .then((response) => {
-        if (!response.ok) throw new Error("Error en la red");
-        return response.json();
-      })
-      .then((data) => {
-        if (data.success) {
-          alert("¡Gracias por confirmar tu asistencia!");
-          document.getElementById("formulario-rsvp").reset();
-        } else {
-          alert("Error al enviar. Inténtalo de nuevo.");
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        alert("Hubo un problema al enviar tu confirmación.");
-      });
+    .then(() => {
+      // No se puede leer la respuesta, pero asumimos que fue exitoso
+      alert("¡Gracias por confirmar tu asistencia!");
+      document.getElementById("formulario-rsvp").reset();
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("Hubo un problema al enviar tu confirmación.");
+    });
   });
 </script>
+
 
 </body>
 </html>
