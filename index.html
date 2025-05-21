@@ -76,58 +76,71 @@
   </div>
 
   <script>
-    // Mostrar contenido al hacer clic
-    document.getElementById('abrir-carta').addEventListener('click', function () {
-      document.getElementById('carta').classList.add('abierta');
-    });
+  // Mostrar contenido al hacer clic
+  document.getElementById('abrir-carta').addEventListener('click', function () {
+    document.getElementById('carta').classList.add('abierta');
+  });
 
-    // Cuenta atrás
-    const fechaBoda = new Date('2025-10-04T13:00:00').getTime();
-    const contadorEl = document.getElementById('contador');
+  // Cuenta atrás
+  const fechaBoda = new Date('2025-10-04T13:00:00').getTime();
+  const contadorEl = document.getElementById('contador');
 
-    function actualizarCuentaAtras() {
-      const ahora = new Date().getTime();
-      const diferencia = fechaBoda - ahora;
+  function actualizarCuentaAtras() {
+    const ahora = new Date().getTime();
+    const diferencia = fechaBoda - ahora;
 
-      if (diferencia <= 0) {
-        contadorEl.innerText = "¡Ya es el gran día!";
-        clearInterval(intervalo);
-        return;
-      }
-
-      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
-
-      contadorEl.innerText = `${dias} días, ${horas}h, ${minutos}m, ${segundos}s`;
+    if (diferencia <= 0) {
+      contadorEl.innerText = "¡Ya es el gran día!";
+      clearInterval(intervalo);
+      return;
     }
 
-    const intervalo = setInterval(actualizarCuentaAtras, 1000);
-    actualizarCuentaAtras();
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
-    // Envío del formulario (usando FormData)
-    document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
-      e.preventDefault();
+    contadorEl.innerText = `${dias} días, ${horas}h, ${minutos}m, ${segundos}s`;
+  }
 
-      const nombre = document.getElementById("nombre").value;
-      const asistencia = document.getElementById("asistencia").value;
-      const alergias = document.getElementById("alergias").value;
+  const intervalo = setInterval(actualizarCuentaAtras, 1000);
+  actualizarCuentaAtras();
 
-      const formData = new FormData();
-      formData.append("nombre", nombre);
-      formData.append("asistencia", asistencia);
-      formData.append("alergias", alergias);
+  // Envío del formulario corregido
+  document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
-        method: "POST",
-        mode: "no-cors",
-        body: formData
+    const nombre = document.getElementById("nombre").value;
+    const asistencia = document.getElementById("asistencia").value;
+    const alergias = document.getElementById("alergias").value;
+
+    const formData = new URLSearchParams();
+    formData.append("nombre", nombre);
+    formData.append("asistencia", asistencia);
+    formData.append("alergias", alergias);
+
+    fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: formData.toString()
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert("¡Gracias por confirmar tu asistencia!");
+          document.getElementById("formulario-rsvp").reset();
+        } else {
+          alert("Hubo un problema al enviar. Inténtalo más tarde.");
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("Error al enviar. Inténtalo más tarde.");
       });
+  });
+</script>
 
-      alert("¡Gracias por confirmar tu asistencia!");
-      document.getElementById("formulario-rsvp").reset();
-    });
-  </script>
 </body>
 </html>
