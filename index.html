@@ -62,9 +62,6 @@
             <option value="No">No</option>
           </select>
 
-          <label for="alergias">¿Tienes alguna intolerancia o alergia alimentaria?</label>
-          <input type="text" id="alergias" name="alergias" placeholder="Ej: gluten, lactosa..." />
-
           <button type="submit">Enviar</button>
         </form>
       </section>
@@ -112,12 +109,10 @@
 
     const nombre = document.getElementById("nombre").value;
     const asistencia = document.getElementById("asistencia").value;
-    const alergias = document.getElementById("alergias").value;
 
     const formData = new FormData();
     formData.append("nombre", nombre);
     formData.append("asistencia", asistencia);
-    formData.append("alergias", alergias);
 
     fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
       method: "POST",
@@ -134,7 +129,5 @@
     });
   });
 </script>
-
-
 </body>
 </html>
