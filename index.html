@@ -54,80 +54,78 @@
         <form id="formulario-rsvp">
           <label for="nombre">Tu nombre:</label>
           <input type="text" id="nombre" name="nombre" required />
+
           <label for="asistencia">¿Vas a venir?</label>
           <select id="asistencia" name="asistencia" required>
             <option value="">Selecciona una opción</option>
             <option value="Sí">Sí</option>
             <option value="No">No</option>
           </select>
+
+          <label for="alergias">¿Tienes alguna alergia o intolerancia alimentaria?</label>
+          <textarea id="alergias" name="alergias" placeholder="Indica aquí tus intolerancias o deja en blanco si no tienes."></textarea>
+
           <button type="submit">Enviar</button>
         </form>
       </section>
 
       <footer>
-        <p>Con cariño, Juanan & Gema</p>
+        <p>Con cariño, Juan & Gema</p>
       </footer>
     </div>
   </div>
 
- <script>
-  // Mostrar contenido al hacer clic
-  document.getElementById('abrir-carta').addEventListener('click', function () {
-    document.getElementById('carta').classList.add('abierta');
-  });
+  <script>
+    // Mostrar contenido al hacer clic
+    document.getElementById('abrir-carta').addEventListener('click', function () {
+      document.getElementById('carta').classList.add('abierta');
+    });
 
-  // Cuenta atrás
-  const fechaBoda = new Date('2025-10-04T13:00:00').getTime();
-  const contadorEl = document.getElementById('contador');
+    // Cuenta atrás
+    const fechaBoda = new Date('2025-10-04T13:00:00').getTime();
+    const contadorEl = document.getElementById('contador');
 
-  function actualizarCuentaAtras() {
-    const ahora = new Date().getTime();
-    const diferencia = fechaBoda - ahora;
+    function actualizarCuentaAtras() {
+      const ahora = new Date().getTime();
+      const diferencia = fechaBoda - ahora;
 
-    if (diferencia <= 0) {
-      contadorEl.innerText = "¡Ya es el gran día!";
-      clearInterval(intervalo);
-      return;
+      if (diferencia <= 0) {
+        contadorEl.innerText = "¡Ya es el gran día!";
+        clearInterval(intervalo);
+        return;
+      }
+
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+      contadorEl.innerText = `${dias} días, ${horas}h, ${minutos}m, ${segundos}s`;
     }
 
-    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+    const intervalo = setInterval(actualizarCuentaAtras, 1000);
+    actualizarCuentaAtras();
 
-    contadorEl.innerText = `${dias} días, ${horas}h, ${minutos}m, ${segundos}s`;
-  }
+    // Envío del formulario
+    document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
+      e.preventDefault();
 
-  const intervalo = setInterval(actualizarCuentaAtras, 1000);
-  actualizarCuentaAtras();
+      const nombre = document.getElementById("nombre").value;
+      const asistencia = document.getElementById("asistencia").value;
+      const alergias = document.getElementById("alergias").value;
 
-  // Envío del formulario
-  document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
-    e.preventDefault();
+      fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ nombre, asistencia, alergias }),
+      });
 
-    const nombre = document.getElementById("nombre").value;
-    const asistencia = document.getElementById("asistencia").value;
-
-    fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
-      method: "POST",
-      mode: "no-cors", // <- agregado para evitar bloqueo por CORS
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ nombre, asistencia }),
-    })
-    .then(() => {
-      // No se puede leer la respuesta, pero asumimos que fue exitoso
       alert("¡Gracias por confirmar tu asistencia!");
       document.getElementById("formulario-rsvp").reset();
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      alert("Hubo un problema al enviar tu confirmación.");
     });
-  });
-</script>
-
-
+  </script>
 </body>
 </html>
