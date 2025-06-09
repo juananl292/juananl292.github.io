@@ -2,155 +2,101 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>¡Nos Casamos!</title>
-
-  <!-- Fuentes decorativas -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- Tu archivo CSS -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juan & Gema - ¡Nos Casamos!</title>
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <div class="carta" id="carta">
-    <div class="portada">
-      <h1>Una carta para ti...</h1>
-      <button id="abrir-carta">Abrir</button>
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Juan & Gema</h1>
+      <p class="tagline">¡Nos Casamos!</p>
+      <p class="fecha">04 Octubre 2025</p>
     </div>
+  </header>
 
-    <div class="contenido">
-      <header>
-        <h1 class="nombre-pareja">Juan & Gema</h1>
-        <p class="subtitulo">¡Nos casamos!</p>
-      </header>
+  <section class="seccion historia">
+    <h2>Nuestra Historia</h2>
+    <p>Después de años de aventuras, viajes y muchos recuerdos compartidos, ¡ha llegado el gran momento!</p>
+  </section>
 
-      <section class="separador fecha-boda">
-        <h2>Cuenta atrás</h2>
+  <section class="seccion cuenta-atras">
+    <h2>Faltan...</h2>
+    <p id="contador">Cargando...</p>
+  </section>
 
-        <div class="fecha-decorada">
-          <p class="subtitulo">Te invitamos a celebrar nuestra boda</p>
+  <section class="seccion ubicacion">
+    <h2>Ceremonia & Celebración</h2>
+    <p><strong>13:00h - Jardines Zahor, Dúrcal</strong></p>
+    <a href="https://www.google.com/maps/place/Hacienda+Los+Molinos" target="_blank" class="boton">Ver ubicación</a>
+  </section>
 
-          <div class="bloque-fecha">
-            <span class="linea"></span>
-            <div class="fecha-centro">
-              <span class="dia-semana">SÁBADO</span>
-              <span class="mes">OCTUBRE</span>
-              <span class="dia-numero">04</span>
-              <span class="anio">2025</span>
-            </div>
-            <span class="linea"></span>
-          </div>
-
-          <div class="contador-verde" id="contador"></div>
-        </div>
-      </section>
-
-      <section class="separador info-evento">
-        <h2>Información del evento</h2>
-        <div class="evento">
-          <p><strong>13:00h - Ceremonia:</strong> Jardines Zahor, Dúrcal</p>
-          <a class="boton" href="https://www.google.com/maps/place/Hacienda+Los+Molinos" target="_blank">Ver ubicación</a>
-        </div>
-      </section>
-
-      <section class="separador mapa-section">
-        <h2>¿Cómo llegar?</h2>
-        <div class="mapa">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.965546310768!2d-4.780104784738353!3d37.884731279733065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6cdfab4f9f5e2d%3A0x634d67a6782499f2!2sHacienda%20Los%20Molinos!5e0!3m2!1ses!2ses!4v1716220485172!5m2!1ses!2ses"
-            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
-          ></iframe>
-        </div>
-      </section>
-
-      <section class="separador">
-        <h2>Momentos especiales</h2>
-        <div class="galeria">
-          <img src="img/foto1.jpg" alt="Nosotros 1" />
-          <img src="img/foto2.jpg" alt="Nosotros 2" />
-          <img src="img/foto3.jpg" alt="Nosotros 3" />
-        </div>
-      </section>
-
-      <section class="separador confirmacion">
-        <h2>Confirmación de asistencia</h2>
-        <form id="formulario-rsvp">
-          <label for="nombre">Tu nombre:</label>
-          <input type="text" id="nombre" name="nombre" required />
-
-          <label for="asistencia">¿Vas a venir?</label>
-          <select id="asistencia" name="asistencia" required>
-            <option value="">Selecciona una opción</option>
-            <option value="Sí">Sí</option>
-            <option value="No">No</option>
-          </select>
-
-          <button type="submit" class="boton">Enviar</button>
-        </form>
-      </section>
-
-      <footer>
-        <p>Con cariño, Juan & Gema</p>
-      </footer>
+  <section class="seccion galeria">
+    <h2>Momentos Especiales</h2>
+    <div class="imagenes">
+      <img src="img/foto1.jpg" alt="Foto 1">
+      <img src="img/foto2.jpg" alt="Foto 2">
+      <img src="img/foto3.jpg" alt="Foto 3">
     </div>
-  </div>
+  </section>
+
+  <section class="seccion rsvp">
+    <h2>¿Nos acompañas?</h2>
+    <form id="formulario-rsvp">
+      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+      <select id="asistencia" name="asistencia" required>
+        <option value="">¿Asistirás?</option>
+        <option value="Sí">Sí</option>
+        <option value="No">No</option>
+      </select>
+      <button type="submit" class="boton">Confirmar</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>Con cariño, Juan & Gema</p>
+  </footer>
 
   <script>
-  // Mostrar contenido al hacer clic
-  document.getElementById('abrir-carta').addEventListener('click', function () {
-    document.getElementById('carta').classList.add('abierta');
-  });
+    const fechaBoda = new Date('2025-10-04T13:00:00').getTime();
+    const contador = document.getElementById("contador");
 
-  // Cuenta atrás
-  const fechaBoda = new Date('2025-10-04T13:00:00').getTime();
-  const contadorEl = document.getElementById('contador');
+    function actualizarCuentaAtras() {
+      const ahora = new Date().getTime();
+      const diferencia = fechaBoda - ahora;
 
-  function actualizarCuentaAtras() {
-    const ahora = new Date().getTime();
-    const diferencia = fechaBoda - ahora;
+      if (diferencia <= 0) {
+        contador.textContent = "¡Hoy es el gran día!";
+        clearInterval(intervalo);
+        return;
+      }
 
-    if (diferencia <= 0) {
-      contadorEl.innerText = "¡Ya es el gran día!";
-      clearInterval(intervalo);
-      return;
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+      contador.textContent = `${dias} días, ${horas}h, ${minutos}m, ${segundos}s`;
     }
 
-    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+    const intervalo = setInterval(actualizarCuentaAtras, 1000);
+    actualizarCuentaAtras();
 
-    contadorEl.innerText = `${dias} días, ${horas}h, ${minutos}m, ${segundos}s`;
-  }
+    document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const nombre = document.getElementById("nombre").value;
+      const asistencia = document.getElementById("asistencia").value;
 
-  const intervalo = setInterval(actualizarCuentaAtras, 1000);
-  actualizarCuentaAtras();
-
-  // Envío del formulario
-  document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const nombre = document.getElementById("nombre").value;
-    const asistencia = document.getElementById("asistencia").value;
-
-    fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ nombre, asistencia }),
-    })
-    .then(() => {
-      alert("¡Gracias por confirmar tu asistencia!");
-      document.getElementById("formulario-rsvp").reset();
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      alert("Hubo un problema al enviar tu confirmación.");
+      fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre, asistencia }),
+      })
+        .then(() => alert("¡Gracias por confirmar!"))
+        .catch(() => alert("Hubo un error. Intenta de nuevo."));
     });
-  });
   </script>
 </body>
 </html>
