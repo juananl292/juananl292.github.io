@@ -72,6 +72,13 @@ h1.nombre-pareja {
   background-color: #56703a;
 }
 
+/* Nueva clase para botón de confirmación centrado */
+.boton-confirmacion-centro {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 20px 0; /* Ajusta el espacio vertical si lo necesitas */
+}
+
 /* Carta animada */
 .portada {
   position: fixed;
@@ -144,7 +151,8 @@ h1.nombre-pareja {
 }
 
 .diaNumero {
-  font-size: 4rem;
+  font-size: 6rem;
+  line-height: 1;
 }
 
 /* Icono iglesia */
