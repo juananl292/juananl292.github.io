@@ -1,141 +1,356 @@
+/* General */
 body {
   margin: 0;
-  padding: 0;
   font-family: 'Playfair Display', serif;
-  background-color: #fff;
-  color: #556b2f;
+  background-color: white;
+  background-image: url('https://images.unsplash.com/photo-1595433562696-912b827f331a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+  background-repeat: repeat;
+  background-size: 300px;
+  background-position: center;
+  color: #3e4d2d;
 }
 
-/* Animación carta */
-.carta {
+/* Envoltorio estilo folio de papel */
+.envoltorio {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 40px 30px;
+  background: white;
+  background-image: url('img/papel-textura.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
   position: relative;
-  min-height: 100vh;
-  overflow: hidden;
+  z-index: 1;
+
+  /* Bordes rasgados con clip-path */
+  clip-path: polygon(
+    0% 5%, 5% 0%, 95% 0%, 100% 5%,
+    100% 95%, 95% 100%, 5% 100%, 0% 95%
+  );
+
+  transition: all 0.4s ease;
 }
 
+/* Opcional: animación sutil */
+.envoltorio:hover {
+  transform: scale(1.01);
+}
+
+/* Títulos */
+h1.nombre-pareja {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3em;
+  margin-bottom: 0.2em;
+  text-align: center;
+}
+
+.subtitulo {
+  text-align: center;
+  font-size: 1.3em;
+  color: #5c6b4b;
+}
+
+/* Botones */
+.boton {
+  background-color: #6b8b4a;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1em;
+  border-radius: 6px; /* Menos redondeado */
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 15px;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* Sombra suave */
+}
+
+.boton:hover {
+  background-color: #56703a;
+}
+
+/* Carta animada */
 .portada {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: #fff;
+  inset: 0;
+  background: white;
+  z-index: 999;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  z-index: 10;
-  transition: transform 1.5s ease-in-out;
-  transform-origin: top;
-  transform: rotateX(0deg);
-}
-.carta.abierta .portada {
-  transform: rotateX(-100deg);
-  pointer-events: none;
-  opacity: 0;
+  justify-content: center;
 }
 
-button {
-  padding: 0.7em 1.5em;
-  border: none;
-  background-color: #6b8e23;
-  color: white;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.contenido {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-/* Hero */
-.hero {
-  position: relative;
+.carta-tapa {
   text-align: center;
-}
-.hero-imagen img {
-  width: 100%;
-  border-radius: 12px;
-  clip-path: polygon(0 0, 100% 5%, 100% 95%, 0% 100%);
-}
-.hero-texto {
-  margin: 2rem 0;
-}
-.hero-texto h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 3rem;
-  color: #6b8e23;
-}
-.hero-texto .nombres {
-  font-size: 2rem;
-  font-weight: bold;
-}
-.hero-texto .frase {
-  margin-top: 1rem;
+  animation: abrirCarta 1s ease forwards;
 }
 
-/* Secciones */
-.separador {
-  margin-top: 3rem;
-  text-align: center;
-}
-.separador h2 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.5rem;
-  color: #6b8e23;
+.portada.animar-carta .carta-tapa {
+  animation: giroCarta 1.5s ease forwards;
 }
 
-.evento {
-  margin: 3rem 0;
-  text-align: center;
-}
-.boton {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
-  background-color: #556b2f;
-  color: white;
-  border-radius: 8px;
-  text-decoration: none;
+@keyframes giroCarta {
+  0% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
 }
 
 /* Galería */
 .galeria {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 15px;
 }
+
 .galeria img {
   width: 100%;
-  border-radius: 16px;
+  max-width: 240px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   object-fit: cover;
-  clip-path: polygon(0 10%, 100% 0%, 100% 90%, 0% 100%);
 }
 
-/* RSVP */
-.rsvp {
-  margin: 3rem 0;
-  text-align: center;
+/* Cuenta atrás */
+.cuenta-atras {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
 }
-.rsvp form {
+
+.dia {
+  border-top: #5c6b4b 2px solid;
+  border-bottom: #5c6b4b 2px solid;
+}
+
+.mes {
+  border-top: #5c6b4b 2px solid;
+  border-bottom: #5c6b4b 2px solid;
+}
+
+.año {
+  display: flex;
+  justify-content: center;
+}
+
+.diaNumero {
+  font-size: 2rem;
+}
+
+/* Icono iglesia */
+.fa-church {
+  color: #556b2f; /* Verde oliva oscuro */
+  margin-right: 0.5rem;
+  
+}
+
+.iglesia {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  padding-top: 15px;
+}
+
+.info-evento {
+  display: flex;
+  justify-content: center;
+}
+
+.boton-ubi {
+  display: flex;
+  justify-content: center;
+}
+.mapa-section{
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 5px
+}
+
+/* Iconos FontAwesome import */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+/* Itinerario */
+.itinerario {
+  background-color: #f0f3e8; /* verde oliva muy claro, casi crema */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(101, 121, 65, 0.15); /* sombra verde oliva suave */
+  padding: 40px 30px;
+  margin: 40px auto;
+  max-width: 800px;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+}
+
+.itinerario h2 {
+  margin-bottom: 50px;
+  color: #6b8b4a;
+  font-size: 1.8em;
+}
+
+.linea-tiempo-alternante {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 0;
+  overflow: hidden; /* Limpia floats para evitar problemas */
+}
+
+/* Línea central vertical */
+.linea-tiempo-alternante::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background-color: #6b8b4a;
+}
+
+.evento {
+  width: 50%;
+  padding: 20px 30px;
+  position: relative;
+  box-sizing: border-box;
+  clear: both;
+}
+
+.evento .contenido {
+  background: #f9f9f9;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  max-width: 400px;
-  margin: 0 auto;
-}
-.rsvp input, .rsvp select {
-  padding: 0.5rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-.rsvp button {
-  background-color: #6b8e23;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #ddd;
 }
 
+.evento::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  width: 14px;
+  height: 14px;
+  background: #6b8b4a;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  z-index: 1;
+}
+
+.evento-izquierda {
+  left: 0;
+  float: left;
+  text-align: right;
+}
+
+.evento-izquierda::before {
+  right: -7px;
+}
+
+.evento-derecha {
+  left: 0%;
+  float: right;
+  text-align: left;
+}
+
+.evento-derecha::before {
+  left: -7px;
+}
+
+.hora {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #6b8b4a;
+}
+
+.titulo {
+  font-size: 1em;
+  font-weight: 500;
+  color: #333;
+}
+
+.contenido i {
+  font-size: 1.5em;
+  color: #6b8b4a;
+}
+
+/* ===== Responsividad para pantallas pequeñas ===== */
+@media (max-width: 767px) {
+  .linea-tiempo-alternante::before {
+    left: 10px; /* Línea fija a la izquierda */
+    height: 100%;
+    transform: none; /* quitar el translateX */
+  }
+  .evento {
+    width: 100%;
+    padding: 10px 20px 30px 60px; /* espacio para la línea y el punto */
+    margin-bottom: 20px;
+    clear: none;
+    float: none;
+  }
+  .evento::before {
+    top: 20px;
+    left: 20px;  /* círculo fijo junto a la línea */
+    right: auto !important;
+  }
+  .evento .contenido {
+    max-width: 100%;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+/* Para tablets medianas */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .linea-tiempo-alternante {
+    max-width: 600px;
+  }
+}
+/*dasdasd///*/ 
+
+section{
+  height:100vh;
+  width: 100%;
+  background-position:center;
+  background-repeat: no-repeat;
+  background-size: cover;
+ background-attachment: fixed;
+}
+.image-1 {
+background-image: url("https://images.pexels.com/photos/2775196/pexels-photo-2775196.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+}
+
+.image-2 {
+background-image: url("https://images.pexels.com/photos/1532771/pexels-photo-1532771.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+}
+.image-3 {
+  background-image: url("https://images.pexels.com/photos/1144176/pexels-photo-1144176.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+}
+.image-4 {
+  background-image: url("https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+}
 /* Footer */
 footer {
-  margin-top: 4rem;
   text-align: center;
+  margin-top: 50px;
   font-style: italic;
+  color: #5c6b4b;
 }

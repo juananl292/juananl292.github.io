@@ -10,68 +10,155 @@
 
   <!-- Estilos -->
   <link rel="stylesheet" href="styles.css" />
-</head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+</head>
 <body>
-  <div class="carta" id="carta">
-    <div class="portada">
+  <!-- Carta animada -->
+  <div class="portada" id="portada">
+    <div class="carta-tapa">
       <h1>Una carta para ti...</h1>
       <button id="abrir-carta">Abrir</button>
     </div>
+  </div>
 
-    <div class="contenido">
-      <section class="hero">
-        <div class="hero-texto">
-          <h1>NUESTRA BODA</h1>
-          <p class="nombres">Juan & Gema</p>
-          <p class="frase">Nos llena de alegría compartir nuestro amor con ustedes.<br> ¡Acompáñanos en un día inolvidable!</p>
-        </div>
-        <div class="hero-imagen">
-          <img src="img/hero.jpg" alt="Imagen portada" />
+  <!-- Contenido principal -->
+  <div class="contenido" id="contenido">
+    <div class="envoltorio">
+      <header>
+        <h1 class="nombre-pareja">Juan & Gema</h1>
+        <p class="subtitulo">¡Nos casamos!</p>
+      </header>
+      
+      <section class="cuenta-atras">
+        <div class="fecha-boda">
+          <div class="fecha-grande">
+            <span class="dia">Sábado</span>
+            <span class="diaNumero">04</span>
+            <span class="mes">OCTUBRE</span>
+            
+          </div>
+          <div>
+            <span class="año">2025</span>
+          </div>
+          <p id="contador">Cargando...</p>
         </div>
       </section>
-
-      <section class="separador cuenta-atras">
-        <h2>Faltan</h2>
-        <p id="contador">Cargando...</p>
+      <div class="iglesia">
+        <p><i class="fas fa-church"></i> </p>
+      </div>
+      
+      <section class="info-evento">
+        
+        <p><strong>13:00h - Lugar:</strong> Jardines Zahor, Dúrcal</p>
+        
       </section>
-
-      <section class="evento">
-        <h2>Detalles del evento</h2>
-        <p><strong>📍 Lugar:</strong> Jardines Zahor, Dúrcal</p>
-        <p><strong>🕐 Hora:</strong> 13:00h</p>
+      <div class="boton-ubi">
         <a class="boton" href="https://www.google.com/maps/place/Hacienda+Los+Molinos" target="_blank">Ver ubicación</a>
+      </div>
+
+      <section class="mapa-section">
+        <p>ITINERARIO DE ACTIVIDADES</p>
+        <div class="mapa">
+         
+        </div>
+      </section>
+      <section class="itinerario">
+        
+        <div class="linea-tiempo-alternante">
+      
+          <!-- Evento 1 -->
+          <div class="evento evento-izquierda">
+            <div class="contenido">
+              <span class="hora">14 PM</span>
+              <i class="fas fa-church"></i>
+              <span class="titulo">Ceremonia</span>
+            </div>
+          </div>
+      
+          <!-- Evento 2 -->
+          <div class="evento evento-derecha">
+            <div class="contenido">
+              <span class="hora">15 PM</span>
+              <i class="fas fa-glass-cheers"></i>
+              <span class="titulo">Cocktail</span>
+            </div>
+          </div>
+      
+          <!-- Evento 3 -->
+          <div class="evento evento-izquierda">
+            <div class="contenido">
+              <span class="hora">7 PM</span>
+              <i class="fas fa-utensils"></i>
+              <span class="titulo">Comida</span>
+            </div>
+          </div>
+      
+          <!-- Evento 4 -->
+          <div class="evento evento-derecha">
+            <div class="contenido">
+              <span class="hora">8:30 PM</span>
+              <i class="fas fa-music"></i>
+              <span class="titulo">Fiesta</span>
+            </div>
+          </div>
+      
+        </div>
+      </section>
+      
+      
+      <section class="image-1">
+      </section>
+      
+      <section class="image-2">
+      </section>
+      
+      <section class="image-3">
+      </section>
+      
+      <section class="image-4">
+      </section>
+      <section class="galeria-section">
+        <h2>Momentos especiales</h2>
+        <div class="galeria">
+          <img src="img/foto1.jpg" alt="Nosotros 1" />
+          <img src="img/foto2.jpg" alt="Nosotros 2" />
+          <img src="img/foto3.jpg" alt="Nosotros 3" />
+        </div>
       </section>
 
-      <section class="galeria">
-        <img src="img/foto1.jpg" alt="Foto 1">
-        <img src="img/foto2.jpg" alt="Foto 2">
-        <img src="img/foto3.jpg" alt="Foto 3">
-      </section>
-
-      <section class="rsvp">
-        <h2>¿Nos acompañas?</h2>
+      <section class="confirmacion">
+        <h2>Confirmación de asistencia</h2>
         <form id="formulario-rsvp">
-          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+          <label for="nombre">Tu nombre:</label>
+          <input type="text" id="nombre" name="nombre" required />
+
+          <label for="asistencia">¿Vas a venir?</label>
           <select id="asistencia" name="asistencia" required>
-            <option value="">¿Vas a venir?</option>
+            <option value="">Selecciona una opción</option>
             <option value="Sí">Sí</option>
             <option value="No">No</option>
           </select>
-          <button type="submit">Confirmar</button>
+
+          <button type="submit" class="boton">Enviar</button>
         </form>
       </section>
 
       <footer>
         <p>Con cariño, Juan & Gema</p>
       </footer>
-    </div>
-  </div>
+    </div> <!-- Fin .envoltorio -->
+  </div> <!-- Fin .contenido -->
 
+  <!-- Scripts -->
   <script>
-    // Animación de la carta
-    document.getElementById('abrir-carta').addEventListener('click', function () {
-      document.getElementById('carta').classList.add('abierta');
+    // Abrir carta
+    document.getElementById("abrir-carta").addEventListener("click", function () {
+      document.getElementById("portada").classList.add("animar-carta");
+      setTimeout(() => {
+        document.getElementById("portada").style.display = "none";
+        document.getElementById("contenido").style.display = "block";
+      }, 1500);
     });
 
     // Cuenta atrás
@@ -99,23 +186,28 @@
     const intervalo = setInterval(actualizarCuentaAtras, 1000);
     actualizarCuentaAtras();
 
-    // Formulario
+    // Envío del formulario
     document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
       e.preventDefault();
+
       const nombre = document.getElementById("nombre").value;
       const asistencia = document.getElementById("asistencia").value;
 
       fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
         method: "POST",
         mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({ nombre, asistencia }),
-      }).then(() => {
+      })
+      .then(() => {
         alert("¡Gracias por confirmar tu asistencia!");
         document.getElementById("formulario-rsvp").reset();
-      }).catch((error) => {
+      })
+      .catch((error) => {
+        console.error("Error:", error);
         alert("Hubo un problema al enviar tu confirmación.");
-        console.error(error);
       });
     });
   </script>
