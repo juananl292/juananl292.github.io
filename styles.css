@@ -1,179 +1,141 @@
-/* Fuente y colores base */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Playfair Display', serif;
-  background-color: #ffffff;
-  color: #556b2f; /* Verde oliva oscuro */
-}
-
-h1, h2, h3 {
-  font-family: 'Great Vibes', cursive;
-  color: #6b8e23;
-  margin-top: 0;
-}
-
-a {
-  color: #6b8e23;
-  text-decoration: none;
-}
-
-/* Animación de la carta */
-.portada {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ffffff;
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  transition: transform 1.5s ease-in-out;
-  transform-origin: top;
-}
-
-.portada.animar-carta {
-  transform: rotateX(-100deg);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.carta-tapa h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  background-color: #fff;
   color: #556b2f;
 }
 
-.carta-tapa button {
-  padding: 0.75rem 2rem;
-  background-color: #6b8e23;
+/* Animación carta */
+.carta {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.portada {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  transition: transform 1.5s ease-in-out;
+  transform-origin: top;
+  transform: rotateX(0deg);
+}
+.carta.abierta .portada {
+  transform: rotateX(-100deg);
+  pointer-events: none;
+  opacity: 0;
+}
+
+button {
+  padding: 0.7em 1.5em;
   border: none;
-  border-radius: 30px;
-  color: #fff;
+  background-color: #6b8e23;
+  color: white;
+  border-radius: 8px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
 }
 
-.carta-tapa button:hover {
-  background-color: #4e6b1e;
-}
-
-/* Contenido principal */
-#contenido {
-  display: none;
-  padding: 2rem;
+.contenido {
   max-width: 800px;
   margin: 0 auto;
+  padding: 2rem;
 }
 
-header {
+/* Hero */
+.hero {
+  position: relative;
   text-align: center;
-  margin-bottom: 2rem;
 }
-
-.nombre-pareja {
+.hero-imagen img {
+  width: 100%;
+  border-radius: 12px;
+  clip-path: polygon(0 0, 100% 5%, 100% 95%, 0% 100%);
+}
+.hero-texto {
+  margin: 2rem 0;
+}
+.hero-texto h1 {
+  font-family: 'Great Vibes', cursive;
   font-size: 3rem;
-  margin: 0;
-}
-
-.subtitulo {
-  font-size: 1.5rem;
   color: #6b8e23;
+}
+.hero-texto .nombres {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.hero-texto .frase {
+  margin-top: 1rem;
 }
 
 /* Secciones */
-section {
-  margin-bottom: 3rem;
-}
-
-h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid #6b8e23;
-  display: inline-block;
-  padding-bottom: 0.2rem;
-}
-
-/* Cuenta atrás */
-.fecha-boda {
+.separador {
+  margin-top: 3rem;
   text-align: center;
 }
-
-.fecha-grande {
+.separador h2 {
+  font-family: 'Great Vibes', cursive;
   font-size: 2.5rem;
-  font-weight: bold;
-  color: #556b2f;
-}
-
-#contador {
-  margin-top: 1rem;
-  font-size: 1.2rem;
   color: #6b8e23;
 }
 
-/* Botón */
+.evento {
+  margin: 3rem 0;
+  text-align: center;
+}
 .boton {
   display: inline-block;
-  background-color: #6b8e23;
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  border-radius: 30px;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  text-align: center;
   margin-top: 1rem;
-  transition: background 0.3s ease;
-}
-
-.boton:hover {
-  background-color: #4e6b1e;
-}
-
-/* Mapa */
-.mapa {
-  margin-top: 1rem;
-  border-radius: 12px;
-  overflow: hidden;
+  padding: 0.6rem 1.2rem;
+  background-color: #556b2f;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
 }
 
 /* Galería */
 .galeria {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: 1fr;
   gap: 1rem;
-  margin-top: 1rem;
 }
-
 .galeria img {
   width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  object-fit: cover;
+  clip-path: polygon(0 10%, 100% 0%, 100% 90%, 0% 100%);
 }
 
-/* Confirmación */
-form {
+/* RSVP */
+.rsvp {
+  margin: 3rem 0;
+  text-align: center;
+}
+.rsvp form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  max-width: 400px;
+  margin: 0 auto;
 }
-
-input, select {
-  padding: 0.75rem;
-  border-radius: 8px;
+.rsvp input, .rsvp select {
+  padding: 0.5rem;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
+}
+.rsvp button {
+  background-color: #6b8e23;
 }
 
 /* Footer */
 footer {
+  margin-top: 4rem;
   text-align: center;
-  padding: 2rem 0;
-  color: #999;
-  font-size: 0.9rem;
+  font-style: italic;
 }

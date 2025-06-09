@@ -11,89 +11,67 @@
   <!-- Estilos -->
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <!-- Carta animada -->
-  <div class="portada" id="portada">
-    <div class="carta-tapa">
+  <div class="carta" id="carta">
+    <div class="portada">
       <h1>Una carta para ti...</h1>
       <button id="abrir-carta">Abrir</button>
     </div>
-  </div>
 
-  <!-- Contenido principal -->
-  <div class="contenido" id="contenido">
-    <header>
-      <h1 class="nombre-pareja">Juan & Gema</h1>
-      <p class="subtitulo">¡Nos casamos!</p>
-    </header>
-
-    <section class="cuenta-atras">
-      <div class="fecha-boda">
-        <div class="fecha-grande">
-          <span class="dia">04</span>
-          <span class="mes">OCT</span>
-          <span class="año">2025</span>
+    <div class="contenido">
+      <section class="hero">
+        <div class="hero-texto">
+          <h1>NUESTRA BODA</h1>
+          <p class="nombres">Juan & Gema</p>
+          <p class="frase">Nos llena de alegría compartir nuestro amor con ustedes.<br> ¡Acompáñanos en un día inolvidable!</p>
         </div>
+        <div class="hero-imagen">
+          <img src="img/hero.jpg" alt="Imagen portada" />
+        </div>
+      </section>
+
+      <section class="separador cuenta-atras">
+        <h2>Faltan</h2>
         <p id="contador">Cargando...</p>
-      </div>
-    </section>
+      </section>
 
-    <section class="info-evento">
-      <h2>Información del evento</h2>
-      <p><strong>13:00h - Ceremonia:</strong> Jardines Zahor, Dúrcal</p>
-      <a class="boton" href="https://www.google.com/maps/place/Hacienda+Los+Molinos" target="_blank">Ver ubicación</a>
-    </section>
+      <section class="evento">
+        <h2>Detalles del evento</h2>
+        <p><strong>📍 Lugar:</strong> Jardines Zahor, Dúrcal</p>
+        <p><strong>🕐 Hora:</strong> 13:00h</p>
+        <a class="boton" href="https://www.google.com/maps/place/Hacienda+Los+Molinos" target="_blank">Ver ubicación</a>
+      </section>
 
-    <section class="mapa-section">
-      <h2>¿Cómo llegar?</h2>
-      <div class="mapa">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.965546310768!2d-4.780104784738353!3d37.884731279733065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6cdfab4f9f5e2d%3A0x634d67a6782499f2!2sHacienda%20Los%20Molinos!5e0!3m2!1ses!2ses!4v1716220485172!5m2!1ses!2ses"
-          width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
-        ></iframe>
-      </div>
-    </section>
+      <section class="galeria">
+        <img src="img/foto1.jpg" alt="Foto 1">
+        <img src="img/foto2.jpg" alt="Foto 2">
+        <img src="img/foto3.jpg" alt="Foto 3">
+      </section>
 
-    <section class="galeria-section">
-      <h2>Momentos especiales</h2>
-      <div class="galeria">
-        <img src="img/foto1.jpg" alt="Nosotros 1" />
-        <img src="img/foto2.jpg" alt="Nosotros 2" />
-        <img src="img/foto3.jpg" alt="Nosotros 3" />
-      </div>
-    </section>
+      <section class="rsvp">
+        <h2>¿Nos acompañas?</h2>
+        <form id="formulario-rsvp">
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+          <select id="asistencia" name="asistencia" required>
+            <option value="">¿Vas a venir?</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+          </select>
+          <button type="submit">Confirmar</button>
+        </form>
+      </section>
 
-    <section class="confirmacion">
-      <h2>Confirmación de asistencia</h2>
-      <form id="formulario-rsvp">
-        <label for="nombre">Tu nombre:</label>
-        <input type="text" id="nombre" name="nombre" required />
-
-        <label for="asistencia">¿Vas a venir?</label>
-        <select id="asistencia" name="asistencia" required>
-          <option value="">Selecciona una opción</option>
-          <option value="Sí">Sí</option>
-          <option value="No">No</option>
-        </select>
-
-        <button type="submit" class="boton">Enviar</button>
-      </form>
-    </section>
-
-    <footer>
-      <p>Con cariño, Juan & Gema</p>
-    </footer>
+      <footer>
+        <p>Con cariño, Juan & Gema</p>
+      </footer>
+    </div>
   </div>
 
-  <!-- Scripts -->
   <script>
-    // Abrir carta
-    document.getElementById("abrir-carta").addEventListener("click", function () {
-      document.getElementById("portada").classList.add("animar-carta");
-      setTimeout(() => {
-        document.getElementById("portada").style.display = "none";
-        document.getElementById("contenido").style.display = "block";
-      }, 1500);
+    // Animación de la carta
+    document.getElementById('abrir-carta').addEventListener('click', function () {
+      document.getElementById('carta').classList.add('abierta');
     });
 
     // Cuenta atrás
@@ -121,28 +99,23 @@
     const intervalo = setInterval(actualizarCuentaAtras, 1000);
     actualizarCuentaAtras();
 
-    // Envío del formulario
+    // Formulario
     document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
       e.preventDefault();
-
       const nombre = document.getElementById("nombre").value;
       const asistencia = document.getElementById("asistencia").value;
 
       fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
         method: "POST",
         mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nombre, asistencia }),
-      })
-      .then(() => {
+      }).then(() => {
         alert("¡Gracias por confirmar tu asistencia!");
         document.getElementById("formulario-rsvp").reset();
-      })
-      .catch((error) => {
-        console.error("Error:", error);
+      }).catch((error) => {
         alert("Hubo un problema al enviar tu confirmación.");
+        console.error(error);
       });
     });
   </script>
