@@ -66,4 +66,10 @@ document.addEventListener("DOMContentLoaded", function () {
       contador.innerHTML = `${dias} días, ${horas}h, ${minutos}m, ${segundos}s`;
     }, 1000);
   }
+
+  // Mostrar formulario de confirmación
+  document.getElementById("mostrar-confirmacion").addEventListener("click", function () {
+    document.querySelector(".confirmacion").style.display = "block";
+    this.style.display = "none";
+  });
 });

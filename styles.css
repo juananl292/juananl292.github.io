@@ -373,3 +373,7 @@ footer {
   font-style: italic;
   color: #5c6b4b;
 }
+
+.confirmacion {
+  display: none;
+}

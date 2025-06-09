@@ -119,7 +119,10 @@
       <section class="image-4">
       </section>
 
-      <section class="confirmacion">
+      <!-- Botón para mostrar el formulario -->
+      <button id="mostrar-confirmacion" class="boton">Confirmar asistencia</button>
+
+      <section class="confirmacion" style="display:none;">
         <h2>Confirmación de asistencia</h2>
         <form id="formulario-rsvp">
           <label for="nombre">Tu nombre:</label>
@@ -201,6 +204,12 @@
         console.error("Error:", error);
         alert("Hubo un problema al enviar tu confirmación.");
       });
+    });
+
+    // Mostrar formulario de confirmación
+    document.getElementById("mostrar-confirmacion").addEventListener("click", function () {
+      document.querySelector(".confirmacion").style.display = "block";
+      this.style.display = "none";
     });
   </script>
 </body>
