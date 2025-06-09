@@ -166,10 +166,10 @@ h1.nombre-pareja {
     gap: 0.3em;
   }
   .diaNumero {
-    font-size: 3.5rem;
+    font-size: 2.2rem; /* Más pequeño para móviles */
   }
   .dia, .mes {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }
 
@@ -384,14 +384,13 @@ h1.nombre-pareja {
   background-attachment: fixed;
 }
 
-/* Adaptación para móviles: fondo scroll y altura menor */
 @media (max-width: 900px) {
   .image-1,
   .image-2,
   .image-3,
   .image-4 {
-    height: 60vh;
-    background-attachment: scroll;
+    height: 45vh; /* Más pequeño para móvil */
+    background-attachment: scroll !important;
     background-position: center center;
   }
 }
