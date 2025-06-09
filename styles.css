@@ -155,6 +155,24 @@ h1.nombre-pareja {
   line-height: 1;
 }
 
+.fecha-grande {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+@media (max-width: 600px) {
+  .fecha-grande {
+    gap: 0.3em;
+  }
+  .diaNumero {
+    font-size: 3.5rem;
+  }
+  .dia, .mes {
+    font-size: 1.1rem;
+  }
+}
+
 /* Icono iglesia */
 .fa-church {
   color: #556b2f; /* Verde oliva oscuro */
@@ -340,7 +358,20 @@ h1.nombre-pareja {
   }
 }
 
-/* Solo para las secciones de imagen */
+/* Secciones de imagen con fondo */
+.image-1 {
+  background-image: url('https://images.pexels.com/photos/2775196/pexels-photo-2775196.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+}
+.image-2 {
+  background-image: url('https://images.pexels.com/photos/1532771/pexels-photo-1532771.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+}
+.image-3 {
+  background-image: url('https://images.pexels.com/photos/1144176/pexels-photo-1144176.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+}
+.image-4 {
+  background-image: url('https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+}
+
 .image-1,
 .image-2,
 .image-3,
@@ -353,20 +384,16 @@ h1.nombre-pareja {
   background-attachment: fixed;
 }
 
-.image-1 {
-  background-image: url('https://media.istockphoto.com/id/636379014/es/foto/manos-la-formación-de-una-forma-de-corazón-con-silueta-al-atardecer.jpg?s=612x612&w=0&k=20&c=R2BE-RgICBnTUjmxB8K9U0wTkNoCKZRi-Jjge8o_OgE=');
-}
-
-.image-2 {
-  background-image: url('https://images.pexels.com/photos/1532771/pexels-photo-1532771.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
-}
-
-.image-3 {
-  background-image: url('https://images.pexels.com/photos/1144176/pexels-photo-1144176.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
-}
-
-.image-4 {
-  background-image: url('https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+/* Adaptación para móviles: fondo scroll y altura menor */
+@media (max-width: 900px) {
+  .image-1,
+  .image-2,
+  .image-3,
+  .image-4 {
+    height: 60vh;
+    background-attachment: scroll;
+    background-position: center center;
+  }
 }
 
 /* Elimina estas propiedades de la regla global section */
