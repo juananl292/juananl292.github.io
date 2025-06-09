@@ -382,6 +382,23 @@ h1.nombre-pareja {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  position: relative;
+}
+
+/* Efecto de separación visual entre imágenes */
+.image-1::after,
+.image-2::after,
+.image-3::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, white 90%);
+  pointer-events: none;
+  z-index: 2;
 }
 
 @media (max-width: 900px) {
@@ -389,9 +406,15 @@ h1.nombre-pareja {
   .image-2,
   .image-3,
   .image-4 {
-    height: 45vh; /* Más pequeño para móvil */
+    height: 55vh;
     background-attachment: scroll !important;
     background-position: center center;
+  }
+  .image-1::after,
+  .image-2::after,
+  .image-3::after {
+    height: 30px;
+    background: linear-gradient(to bottom, transparent, white 90%);
   }
 }
 
