@@ -331,9 +331,13 @@ h1.nombre-pareja {
     max-width: 600px;
   }
 }
-/*dasdasd///*/ 
 
-section {
+/* Solo para las secciones de imagen */
+.image-1,
+.image-2,
+.image-3,
+.image-4 {
+  height: 100vh;
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -341,11 +345,9 @@ section {
   background-attachment: fixed;
 }
 
-.image-1,
-.image-2,
-.image-3,
-.image-4 {
-  height: 100vh;
+/* Elimina estas propiedades de la regla global section */
+section {
+  width: 100%;
 }
 
 /* Footer */
