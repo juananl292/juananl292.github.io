@@ -345,6 +345,22 @@ h1.nombre-pareja {
   background-attachment: fixed;
 }
 
+.image-1 {
+  background-image: url('https://images.pexels.com/photos/2775196/pexels-photo-2775196.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+}
+
+.image-2 {
+  background-image: url('https://images.pexels.com/photos/1532771/pexels-photo-1532771.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+}
+
+.image-3 {
+  background-image: url('https://images.pexels.com/photos/1144176/pexels-photo-1144176.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+}
+
+.image-4 {
+  background-image: url('https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+}
+
 /* Elimina estas propiedades de la regla global section */
 section {
   width: 100%;
