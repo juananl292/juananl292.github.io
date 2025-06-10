@@ -25,11 +25,26 @@
   <!-- Contenido principal -->
   <div class="contenido" id="contenido">
     <div class="envoltorio">
-      <header>
+      <header style="position: relative;">
+        <img src="img/pngwing.com.png" alt="Rama de olivo" class="rama-olivo-titulo">
         <h1 class="nombre-pareja">Juan & Gema</h1>
         <p class="subtitulo">¡Nos casamos!</p>
       </header>
       
+      <div class="imagen-central">
+        <div class="borde-desgarrado borde-superior">
+          <svg viewBox="0 0 500 40" width="100%" height="40" preserveAspectRatio="none">
+            <path d="M0,30 Q50,0 100,30 Q150,40 200,20 Q250,0 300,30 Q350,40 400,20 Q450,0 500,30 L500,0 L0,0 Z" fill="#fff"/>
+          </svg>
+        </div>
+        <img src="img/enlace.PNG" alt="Foto especial" />
+        <div class="borde-desgarrado borde-inferior">
+          <svg viewBox="0 0 500 40" width="100%" height="40" preserveAspectRatio="none">
+            <path d="M0,10 Q50,40 100,10 Q150,0 200,20 Q250,40 300,10 Q350,0 400,20 Q450,40 500,10 L500,40 L0,40 Z" fill="#fff"/>
+          </svg>
+        </div>
+      </div>
+
       <section class="cuenta-atras">
         <div class="fecha-boda">
           <div class="fecha-grande">
@@ -167,7 +182,7 @@
       const diferencia = fechaBoda - ahora;
 
       if (diferencia <= 0) {
-        contadorEl.innerText = "¡Ya es el gran día!";
+        contadorEl.innerHTML = "<span class='fin-cuenta'>¡Ya es el gran día!</span>";
         clearInterval(intervalo);
         return;
       }
@@ -177,7 +192,12 @@
       const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
-      contadorEl.innerText = `${dias} días, ${horas}h, ${minutos}m, ${segundos}s`;
+      contadorEl.innerHTML = `
+        <span class="bloque-cuenta"><span class="numero-cuenta">${dias}</span><span class="unidad-cuenta">días</span></span>
+        <span class="bloque-cuenta"><span class="numero-cuenta">${horas}</span><span class="unidad-cuenta">h</span></span>
+        <span class="bloque-cuenta"><span class="numero-cuenta">${minutos}</span><span class="unidad-cuenta">m</span></span>
+        <span class="bloque-cuenta"><span class="numero-cuenta">${segundos}</span><span class="unidad-cuenta">s</span></span>
+      `;
     }
 
     const intervalo = setInterval(actualizarCuentaAtras, 1000);
