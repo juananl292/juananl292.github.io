@@ -164,11 +164,14 @@ h1.nombre-pareja {
     -webkit-overflow-scrolling: touch;
     margin: 30px 0 20px 0;
     padding-bottom: 10px;
+    height: 220px; /* Añade un alto fijo */
   }
   .galeria-carrusel {
     display: flex;
     gap: 18px;
     width: max-content;
+    height: 100%;
+    align-items: center;
   }
   .galeria-carrusel img {
     width: 80vw;
@@ -177,13 +180,15 @@ h1.nombre-pareja {
     object-fit: cover;
     border-radius: 16px;
     box-shadow: 0 4px 16px rgba(60,60,60,0.13);
-    scroll-snap-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+    transition: opacity 0.7s cubic-bezier(.4,2,.6,1), transform 0.7s cubic-bezier(.4,2,.6,1);
     background: #fff;
+    scroll-snap-align: center;
   }
-  .galeria-carrusel img:active {
-    transform: scale(0.97);
-    box-shadow: 0 2px 8px rgba(60,60,60,0.10);
+  .galeria-carrusel img.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
