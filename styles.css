@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: 'Playfair Display', serif;
-  background: #fff;
+  background: #e3ecd7; /* Verde oliva pastel */
   color: #3e4d2d;
   /* Solo rama en la esquina inferior derecha */
   background-image: url('img/olivo-esquina-der.png');
@@ -40,13 +40,8 @@ body {
   position: relative;
   z-index: 1;
 
-  /* Bordes rasgados con clip-path */
-  clip-path: polygon(
-    0% 5%, 5% 0%, 95% 0%, 100% 5%,
-    100% 95%, 95% 100%, 5% 100%, 0% 95%
-  );
-
   transition: all 0.4s ease;
+  border-radius: 18px;
 }
 
 /* Opcional: animación sutil */
@@ -133,6 +128,13 @@ h1.nombre-pareja {
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 15px;
+}
+
+.galeria img,
+.galeria-carrusel img {
+  border-radius: 18px 38px 18px 38px;
+  border: 8px solid #fff;
+  box-shadow: 0 8px 24px rgba(60,60,60,0.13);
 }
 
 .galeria img {
@@ -304,12 +306,14 @@ h1.nombre-pareja {
 
 /* Itinerario */
 .itinerario {
-  background-color: #f0f3e8; /* verde oliva muy claro, casi crema */
+  background-color: #f0f3e8;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(101, 121, 65, 0.15); /* sombra verde oliva suave */
+  box-shadow: 0 4px 10px rgba(101, 121, 65, 0.15);
   padding: 40px 30px;
   margin: 40px auto;
-  max-width: 800px;
+  max-width: 100%;
+  width: 800px;
+  box-sizing: border-box;
   text-align: center;
   font-family: 'Playfair Display', serif;
 }
@@ -450,16 +454,16 @@ h1.nombre-pareja {
 
 /* Secciones de imagen con fondo */
 .image-1 {
-  background-image: url('https://images.pexels.com/photos/2775196/pexels-photo-2775196.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-image: url('img/image1.PNG');
 }
 .image-2 {
-  background-image: url('https://images.pexels.com/photos/1532771/pexels-photo-1532771.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-image: url('img/image3.jpg');
 }
 .image-3 {
-  background-image: url('https://images.pexels.com/photos/1144176/pexels-photo-1144176.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-image: url('img/image2.jpg');
 }
 .image-4 {
-  background-image: url('https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-image: url('img/image4.jpg');
 }
 
 .image-1,
@@ -468,11 +472,12 @@ h1.nombre-pareja {
 .image-4 {
   height: 100vh;
   width: 100%;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;      /* Cambia cover por contain */
   background-attachment: fixed;
   position: relative;
+  background-color: #fff;        /* O el color de fondo que prefieras */
 }
 
 /* Efecto de separación visual entre imágenes */
@@ -499,12 +504,7 @@ h1.nombre-pareja {
     height: 55vh;
     background-attachment: scroll !important;
     background-position: center center;
-  }
-  .image-1::after,
-  .image-2::after,
-  .image-3::after {
-    height: 30px;
-    background: linear-gradient(to bottom, transparent, white 90%);
+    background-size: contain;   /* Asegura contain también aquí */
   }
 }
 
@@ -907,5 +907,67 @@ header.cabecera-olivo p.subtitulo {
     min-height: 140px;
     padding-top: 24px;
     padding-bottom: 18px;
+  }
+}
+
+.bloque-ubicacion {
+  background: #f0f3e8;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(107, 139, 74, 0.08);
+  padding: 24px 18px 18px 18px;
+  max-width: 420px;
+  margin: 32px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.bloque-ubicacion .iglesia {
+  background: #e3ecd7;
+  border-radius: 50%;
+  padding: 16px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  color: #6b8b4a;
+  box-shadow: 0 2px 8px rgba(107, 139, 74, 0.10);
+}
+
+.bloque-ubicacion .info-evento p {
+  margin: 0;
+  color: #3e4d2d;
+  font-size: 1.1em;
+}
+
+.bloque-ubicacion .boton-ubi {
+  margin-top: 10px;
+}
+
+.bloque-ubicacion .boton {
+  background-color: #6b8b4a;
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.3s;
+  box-shadow: 0 2px 6px rgba(107, 139, 74, 0.10);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.bloque-ubicacion .boton:hover {
+  background-color: #56703a;
+}
+
+@media (max-width: 600px) {
+  .bloque-ubicacion {
+    max-width: 98vw;
+    padding: 14px 4px 14px 4px;
   }
 }
