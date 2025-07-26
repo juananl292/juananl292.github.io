@@ -17,7 +17,7 @@
   <!-- Carta animada -->
   <div class="portada" id="portada">
     <div class="carta-tapa">
-      <h1>Una carta para ti...</h1>
+      <h1>Sí estás leyendo esto, es porque formas parte de algo muy importante para nosotros. Ábrelo, y sigue acompañandonos en este camino tan especial</h1>
       <button id="abrir-carta">Abrir</button>
     </div>
   </div>
@@ -72,6 +72,18 @@
         </div>
       </div>
 
+      <div class="bloque-ubicacion">
+        <div class="iglesia">
+          <i class="fas fa-hotel"></i>
+        </div>
+        <div class="info-evento">
+          <p> Hoteles cercanos</p>
+        </div>
+        <div class="boton-ubi">
+          <a class="boton" href="https://maps.app.goo.gl/c3paFh51qx1DP3oX9" target="_blank">Ver ubicación</a>
+        </div>
+      </div>
+
       <section class="mapa-section">
         <p>ITINERARIO DE ACTIVIDADES</p>
         <div class="mapa">
@@ -85,7 +97,7 @@
           <!-- Evento 1 -->
           <div class="evento evento-izquierda">
             <div class="contenido">
-              <span class="hora">14 PM</span>
+              <span class="hora">12:45</span>
               <i class="fas fa-church"></i>
               <span class="titulo">Ceremonia</span>
             </div>
@@ -94,7 +106,7 @@
           <!-- Evento 2 -->
           <div class="evento evento-derecha">
             <div class="contenido">
-              <span class="hora">15 PM</span>
+              <span class="hora">14:00</span>
               <i class="fas fa-glass-cheers"></i>
               <span class="titulo">Cocktail</span>
             </div>
@@ -103,7 +115,7 @@
           <!-- Evento 3 -->
           <div class="evento evento-izquierda">
             <div class="contenido">
-              <span class="hora">7 PM</span>
+              <span class="hora">15:30</span>
               <i class="fas fa-utensils"></i>
               <span class="titulo">Comida</span>
             </div>
@@ -112,9 +124,18 @@
           <!-- Evento 4 -->
           <div class="evento evento-derecha">
             <div class="contenido">
-              <span class="hora">8:30 PM</span>
+              <span class="hora">19:00</span>
               <i class="fas fa-music"></i>
               <span class="titulo">Fiesta</span>
+            </div>
+          </div>
+
+           <!-- Evento 5 -->
+          <div class="evento evento-izquierda">
+            <div class="contenido">
+              <span class="hora">23:00</span>
+              <i class="fas fa-utensils"></i>
+              <span class="titulo">Cena</span>
             </div>
           </div>
       
@@ -142,8 +163,11 @@
       <section class="confirmacion" style="display:none;">
         <h2>Confirmación de asistencia</h2>
         <form id="formulario-rsvp">
-          <label for="nombre">Tu nombre:</label>
+          <label for="nombre">Tu nombre y el de tus acompañantes:</label>
           <input type="text" id="nombre" name="nombre" required />
+
+            <label for="alergias">¿Hay alguien con intolerancias o alergias?</label>
+          <input type="text" id="alergias" name="alergias" required />
 
           <label for="asistencia">¿Vas a venir?</label>
           <select id="asistencia" name="asistencia" required>
@@ -204,11 +228,12 @@
     actualizarCuentaAtras();
 
     // Envío del formulario
-    document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
+   document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
       e.preventDefault();
 
       const nombre = document.getElementById("nombre").value;
       const asistencia = document.getElementById("asistencia").value;
+      const alergias = document.getElementById("alergias").value;
 
       fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
         method: "POST",
@@ -216,7 +241,7 @@
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ nombre, asistencia }),
+        body: JSON.stringify({ nombre, asistencia,alergias }),
       })
       .then(() => {
         alert("¡Gracias por confirmar tu asistencia!");
