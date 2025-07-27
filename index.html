@@ -231,9 +231,9 @@
    document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
       e.preventDefault();
 
-      const nombre = document.getElementById("nombre").value;
+      const nombre = document.getElementById("nombre").value + " :: " + document.getElementById("alergias").value;
       const asistencia = document.getElementById("asistencia").value;
-      const alergias = document.getElementById("alergias").value;
+      
 
       fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
         method: "POST",
@@ -241,7 +241,7 @@
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ nombre, asistencia,alergias }),
+        body: JSON.stringify({ nombre, asistencia }),
       })
       .then(() => {
         alert("¡Gracias por confirmar tu asistencia!");
