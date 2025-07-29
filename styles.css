@@ -971,3 +971,25 @@ header.cabecera-olivo p.subtitulo {
     padding: 14px 4px 14px 4px;
   }
 }
+
+#abrir-carta {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5em;
+  padding: 18px 48px;
+  background: linear-gradient(90deg, #6b8b4a 60%, #a3b88b 100%);
+  color: #fff;
+  border: none;
+  border-radius: 32px;
+  box-shadow: 0 4px 18px rgba(107,139,74,0.13);
+  cursor: pointer;
+  margin-top: 32px;
+  letter-spacing: 1px;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  outline: none;
+}
+
+#abrir-carta:hover, #abrir-carta:focus {
+  background: linear-gradient(90deg, #56703a 60%, #8fa77a 100%);
+  transform: scale(1.06);
+  box-shadow: 0 8px 32px rgba(107,139,74,0.18);
+}
