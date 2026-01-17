@@ -553,8 +553,9 @@ footer {
    Animaciones & Utilidades
    ========================================= */
 .fade-up {
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  /* Forzado a visible ya que revertimos el JS */
+  transform: translateY(0);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
