@@ -205,77 +205,8 @@
 
   </main>
 
-  <!-- Scripts -->
-  <script>
-    // Abrir carta (Fade Out Simple)
-    document.getElementById("abrir-carta").addEventListener("click", function () {
-      const portada = document.getElementById("portada");
-      portada.style.opacity = '0';
-      setTimeout(() => {
-        portada.style.display = "none";
-        document.getElementById("contenido").style.opacity = "1";
-      }, 1000);
-    });
-
-    // Mostrar Formulario
-    document.getElementById("mostrar-confirmacion").addEventListener("click", function () {
-      document.querySelector(".confirmacion-form-wrapper").style.display = "block";
-      this.style.display = "none";
-    });
-
-    // Cuenta atrás
-    const fechaBoda = new Date('2026-07-18T13:00:00').getTime();
-    const contadorEl = document.getElementById('contador');
-
-    function actualizarCuentaAtras() {
-      const ahora = new Date().getTime();
-      const diferencia = fechaBoda - ahora;
-
-      if (diferencia <= 0) {
-        contadorEl.innerHTML = "¡Hoy es el día!";
-        return;
-      }
-
-      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-      // Formato Minimalista: "185 DÍAS"
-      contadorEl.innerHTML = `
-        <span class="count-number">${dias}</span> <span class="count-label">Días</span>
-      `;
-    }
-
-    setInterval(actualizarCuentaAtras, 1000);
-    actualizarCuentaAtras();
-
-    // Form Submission (Google Sheets)
-    document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const nombre = document.getElementById("nombre").value + " :: " + document.getElementById("alergias").value;
-      const asistencia = document.getElementById("asistencia").value;
-
-      const btn = this.querySelector('button[type="submit"]');
-      const originalText = btn.innerText;
-      btn.innerText = "Enviando...";
-
-      fetch("https://script.google.com/macros/s/AKfycbyisD75GxzsyTjTM25t3GzdXUxLMe6cf66B0tirR5bRVBEAuAmG3-kKJ5YdDV2ywR4/exec", {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nombre, asistencia }),
-      })
-        .then(() => {
-          alert("Confirmación recibida. ¡Gracias!");
-          document.getElementById("formulario-rsvp").reset();
-          btn.innerText = "Enviado";
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          alert("Error al enviar. Por favor intenta de nuevo.");
-          btn.innerText = originalText;
-        });
-    });
-  </script>
+  <!-- Linked Script -->
+  <script src="script.js"></script>
 </body>
 
 </html>

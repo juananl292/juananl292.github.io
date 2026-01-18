@@ -1,75 +1,121 @@
 const ENDPOINT = "https://script.google.com/macros/s/AKfycbyisD75GxzsyTjTM25t3GzdXUxLMe6cf66B0tirR5bRVBEAuAmG3-kKJ5YdDV2ywR4/exec";
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Manejar animación de la carta
+
+  /* =========================================
+     1. PORTADA / COVER ANIMATION
+     ========================================= */
   const abrirBtn = document.getElementById("abrir-carta");
-  const carta = document.querySelector(".carta");
-  const portada = document.querySelector(".portada");
-  const contenido = document.querySelector(".contenido");
+  const portada = document.getElementById("portada");
+  const contenido = document.getElementById("contenido");
 
-  abrirBtn.addEventListener("click", () => {
-    carta.classList.add("abierta");
-    setTimeout(() => {
-      portada.style.display = "none";
-      contenido.style.display = "block";
-    }, 1000); // tiempo igual al de la animación CSS
-  });
-
-  // Manejar envío del formulario RSVP
-  const form = document.getElementById("formulario-rsvp");
-
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const nombre = document.getElementById("nombre").value.trim();
-      const asistencia = document.getElementById("asistencia").value;
-
-      if (!nombre || !asistencia) {
-        alert("Por favor, completa todos los campos.");
-        return;
-      }
-
-      fetch(ENDPOINT, {
-        method: "POST",
-        body: JSON.stringify({ nombre, asistencia }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((res) => res.json())
-        .then(() => {
-          alert(`Gracias, ${nombre}. Tu confirmación ha sido enviada.`);
-          form.reset();
-        })
-        .catch((err) => {
-          alert("Hubo un error al enviar tu confirmación. Intenta de nuevo.");
-          console.error(err);
-        });
+  if (abrirBtn && portada) {
+    abrirBtn.addEventListener("click", () => {
+      portada.style.opacity = '0';
+      setTimeout(() => {
+        portada.style.display = "none";
+        contenido.style.opacity = "1";
+      }, 1000);
     });
   }
 
-  // Contador regresivo
+  /* =========================================
+     2. COUNTDOWN / CUENTA ATRÁS
+     ========================================= */
   const contador = document.getElementById("contador");
   if (contador) {
-    const fechaBoda = new Date("2025-09-20T13:00:00").getTime();
+    // FECHA CORRECTA: 18 de Julio de 2026
+    const fechaBoda = new Date("2026-07-18T13:00:00").getTime();
 
-    setInterval(() => {
+    const actualizarCuenta = () => {
       const ahora = new Date().getTime();
       const distancia = fechaBoda - ahora;
+
+      if (distancia < 0) {
+        contador.innerHTML = "¡Hoy es el gran día!";
+        return;
+      }
 
       const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
       const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
 
-      contador.innerHTML = `${dias} días, ${horas}h, ${minutos}m, ${segundos}s`;
-    }, 1000);
+      // Estilo visual "Pink Elegance"
+      contador.innerHTML = `
+        <div class="count-block">
+            <span class="count-val">${dias}</span>
+            <span class="count-label">Días</span>
+        </div>
+        <div class="count-block">
+            <span class="count-val">${horas}</span>
+            <span class="count-label">Hs</span>
+        </div>
+        <div class="count-block">
+            <span class="count-val">${minutos}</span>
+            <span class="count-label">Min</span>
+        </div>
+         <div class="count-block">
+            <span class="count-val">${segundos}</span>
+            <span class="count-label">Seg</span>
+        </div>
+      `;
+    };
+
+    setInterval(actualizarCuenta, 1000);
+    actualizarCuenta();
   }
 
-  // Mostrar formulario de confirmación
-  document.getElementById("mostrar-confirmacion").addEventListener("click", function () {
-    document.querySelector(".confirmacion").style.display = "block";
-    this.style.display = "none";
-  });
+  /* =========================================
+     3. RSVP FORM / CONFIRMACIÓN
+     ========================================= */
+  // Mostrar formulario
+  const btnMostrar = document.getElementById("mostrar-confirmacion");
+  const formWrapper = document.querySelector(".confirmacion-form-wrapper");
+
+  if (btnMostrar && formWrapper) {
+    btnMostrar.addEventListener("click", function () {
+      formWrapper.style.display = "block";
+      this.style.display = "none";
+    });
+  }
+
+  // Enviar formulario
+  const form = document.getElementById("formulario-rsvp");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const nombreInput = document.getElementById("nombre");
+      const alergiasInput = document.getElementById("alergias");
+      const asistenciaInput = document.getElementById("asistencia");
+      const submitBtn = this.querySelector('button[type="submit"]');
+
+      // Unir nombre y alergias para el formato de la hoja
+      const nombreCompleto = nombreInput.value.trim() + " :: " + alergiasInput.value.trim();
+      const asistencia = asistenciaInput.value;
+
+      const originalText = submitBtn.innerText;
+      submitBtn.innerText = "Enviando...";
+      submitBtn.disabled = true;
+
+      fetch(ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre: nombreCompleto, asistencia }),
+      })
+        .then(() => {
+          alert("¡Gracias! Hemos recibido tu confirmación.");
+          form.reset();
+          submitBtn.innerText = "Enviado Correctamente";
+        })
+        .catch((err) => {
+          console.error(err);
+          alert("Hubo un error. Por favor inténtalo de nuevo.");
+          submitBtn.innerText = originalText;
+          submitBtn.disabled = false;
+        });
+    });
+  }
 });
