@@ -21,146 +21,186 @@
 </head>
 
 <body>
-  <!-- Cover / Intro (Legacy ID preserved) -->
-  <div class="portada-minimal" id="portada">
-    <div class="intro-content">
-      <p class="intro-date">18 . 07 . 2026</p>
-      <h1>José & Paola</h1>
-      <button id="abrir-carta" class="btn-line">Entrar</button>
+  <!-- Cover / Intro (Restored Original Message) -->
+  <div class="portada-pink" id="portada">
+    <div class="intro-card-pink">
+      <h1>Eres especial para nosotros. Ábrelo, y sigue acompañándonos en este camino</h1>
+      <button id="abrir-carta" class="btn-pink-outline">Abrir</button>
     </div>
   </div>
 
   <!-- Main Content -->
   <main id="contenido" class="main-content">
 
-    <!-- Hero Section -->
-    <header class="hero-minimal" id="inicio">
-      <div class="hero-image-wrapper">
-        <img src="img/enlace.jpeg" alt="José y Paola" class="hero-image">
-      </div>
-      <div class="hero-text">
-        <span class="eyebrow">Nos casamos</span>
-        <h1 class="hero-names">José & Paola</h1>
-        <span class="hero-date-display">Sábado 18 de Julio, 2026</span>
+    <!-- Hero Section (Full Screen Parallax) -->
+    <header class="hero-parallax" id="inicio">
+      <div class="parallax-bg" style="background-image: url('img/enlace.jpeg');"></div>
+      <div class="hero-overlay-gradient"></div>
+      <div class="hero-content-pink">
+        <span class="eyebrow-pink">¡Nos casamos!</span>
+        <h1 class="hero-names-pink">José & Paola</h1>
+        <div class="date-badge">18 . 07 . 2026</div>
+        <i class="fas fa-chevron-down scroll-arrow-pink"></i>
       </div>
     </header>
 
     <!-- Quote -->
-    <section class="section-quote">
+    <section class="section-quote-pink">
+      <div class="flower-icon"><i class="fas fa-heart"></i></div>
       <p>"El amor no mira con los ojos, sino con el alma"</p>
     </section>
 
-    <!-- Countdown -->
-    <section class="section-countdown">
-      <div id="contador" class="countdown-display">Cargando...</div>
+    <!-- Countdown (Prominent) -->
+    <section class="section-countdown-pink">
+      <div id="contador" class="countdown-display-pink">Cargando...</div>
     </section>
 
-    <!-- Locations (Ceremony & Venue) -->
-    <section class="section-locations">
-      <h2 class="section-heading">Ubicación</h2>
-      <div class="locations-wrapper">
+    <!-- Locations (Horizontal Layout with Icons) -->
+    <section class="section-locations-pink">
+      <h2 class="heading-pink">Ubicación</h2>
+      <div class="locations-row">
 
-        <article class="location-item">
-          <span class="loc-label">Ceremonia</span>
-          <h3>Iglesia de San Lorenzo</h3>
-          <p>Guajar</p>
-          <a href="https://maps.app.goo.gl/dyPaWPJaokeTsVj58" target="_blank" class="link-underline">Ver Mapa</a>
-        </article>
+        <div class="location-box">
+          <div class="icon-circle"><i class="fas fa-church"></i></div>
+          <h3>Ceremonia</h3>
+          <p>Iglesia de San Lorenzo</p>
+          <span class="location-sub">Guajar</span>
+          <a href="https://maps.app.goo.gl/dyPaWPJaokeTsVj58" target="_blank" class="btn-small-pink">Ver Mapa</a>
+        </div>
 
-        <span class="divider-vertical"></span>
-
-        <article class="location-item">
-          <span class="loc-label">Celebración</span>
-          <h3>Jardines Zahor</h3>
-          <p>Dúrcal</p>
-          <a href="https://maps.app.goo.gl/c3paFh51qx1DP3oX9" target="_blank" class="link-underline">Ver Mapa</a>
-        </article>
+        <div class="location-box">
+          <div class="icon-circle"><i class="fas fa-glass-cheers"></i></div>
+          <h3>Celebración</h3>
+          <p>Jardines Zahor</p>
+          <span class="location-sub">Dúrcal</span>
+          <a href="https://maps.app.goo.gl/c3paFh51qx1DP3oX9" target="_blank" class="btn-small-pink">Ver Mapa</a>
+        </div>
 
       </div>
 
-      <div class="hotels-link">
-        <a href="https://maps.app.goo.gl/gsHZcyqB1p5fdayk8" target="_blank" class="btn-outline">Ver Hoteles Cercanos</a>
+      <div class="hotels-wrapper">
+        <a href="https://maps.app.goo.gl/gsHZcyqB1p5fdayk8" target="_blank" class="link-pink"><i class="fas fa-bed"></i>
+          Ver Hoteles Cercanos</a>
       </div>
     </section>
 
-    <!-- Timeline -->
-    <section class="section-timeline">
-      <h2 class="section-heading">Itinerario</h2>
-      <div class="timeline-minimal">
-        <div class="time-row">
-          <span class="time">12:45</span>
-          <span class="activity">Ceremonia</span>
+    <!-- Timeline (Alternating "Pretty" Layout) -->
+    <section class="section-timeline-pink">
+      <h2 class="heading-pink">Itinerario</h2>
+      <div class="timeline-visual">
+        <!-- Item 1: Left -->
+        <div class="timeline-row left">
+          <div class="time-content">
+            <span class="time-tag">12:45</span>
+            <h3>Ceremonia</h3>
+            <p>El "Sí, quiero"</p>
+          </div>
+          <div class="time-icon"><i class="fas fa-church"></i></div>
+          <div class="time-spacer"></div>
         </div>
-        <div class="time-row">
-          <span class="time">14:00</span>
-          <span class="activity">Cocktail</span>
+
+        <!-- Item 2: Right -->
+        <div class="timeline-row right">
+          <div class="time-spacer"></div>
+          <div class="time-icon"><i class="fas fa-glass-cheers"></i></div>
+          <div class="time-content">
+            <span class="time-tag">14:00</span>
+            <h3>Cocktail</h3>
+            <p>Brindis</p>
+          </div>
         </div>
-        <div class="time-row">
-          <span class="time">15:30</span>
-          <span class="activity">Comida</span>
+
+        <!-- Item 3: Left -->
+        <div class="timeline-row left">
+          <div class="time-content">
+            <span class="time-tag">15:30</span>
+            <h3>Comida</h3>
+            <p>Banquete</p>
+          </div>
+          <div class="time-icon"><i class="fas fa-utensils"></i></div>
+          <div class="time-spacer"></div>
         </div>
-        <div class="time-row">
-          <span class="time">19:00</span>
-          <span class="activity">Fiesta</span>
+
+        <!-- Item 4: Right -->
+        <div class="timeline-row right">
+          <div class="time-spacer"></div>
+          <div class="time-icon"><i class="fas fa-music"></i></div>
+          <div class="time-content">
+            <span class="time-tag">19:00</span>
+            <h3>Fiesta</h3>
+            <p>Baile</p>
+          </div>
         </div>
-        <div class="time-row">
-          <span class="time">23:00</span>
-          <span class="activity">Recena</span>
+        <!-- Item 5: Left -->
+        <div class="timeline-row left">
+          <div class="time-content">
+            <span class="time-tag">23:00</span>
+            <h3>Recena</h3>
+            <p>¡Seguimos!</p>
+          </div>
+          <div class="time-icon"><i class="fas fa-moon"></i></div>
+          <div class="time-spacer"></div>
         </div>
       </div>
     </section>
 
-    <!-- Gallery (Masonry) -->
-    <section class="section-gallery">
-      <div class="masonry-grid">
-        <img src="img/image1.jpeg" alt="Foto 1" class="gallery-img">
-        <img src="img/image2.jpeg" alt="Foto 2" class="gallery-img">
-        <img src="img/image3.jpeg" alt="Foto 3" class="gallery-img">
-        <img src="img/image4.jpeg" alt="Foto 4" class="gallery-img">
+    <!-- Gallery (Uniform Grid / Polaroid Style) -->
+    <section class="section-gallery-pink">
+      <div class="grid-uniform">
+        <div class="photo-frame">
+          <img src="img/image1.jpeg" alt="Foto 1" loading="lazy">
+        </div>
+        <div class="photo-frame">
+          <img src="img/image2.jpeg" alt="Foto 2" loading="lazy">
+        </div>
+        <div class="photo-frame">
+          <img src="img/image3.jpeg" alt="Foto 3" loading="lazy">
+        </div>
+        <div class="photo-frame">
+          <img src="img/image4.jpeg" alt="Foto 4" loading="lazy">
+        </div>
       </div>
     </section>
 
     <!-- RSVP -->
-    <section class="section-rsvp">
-      <div class="rsvp-header">
-        <h2 class="section-heading">Confirmación</h2>
-        <p>Por favor, confirma tu asistencia antes del 1 de Junio</p>
-      </div>
+    <section class="section-rsvp-pink">
+      <div class="rsvp-card">
+        <h2 class="heading-pink">Confirmación</h2>
+        <p>Esperamos contar contigo en nuestro gran día</p>
 
-      <button id="mostrar-confirmacion" class="btn-solid">Confirmar Asistencia</button>
+        <button id="mostrar-confirmacion" class="btn-pink-solid">Confirmar Asistencia</button>
 
-      <div class="confirmacion-form-wrapper" style="display:none;">
-        <form id="formulario-rsvp" class="minimal-form">
-          <div class="input-group">
-            <label for="nombre">Nombre Completo (Tú y acompañantes)</label>
-            <input type="text" id="nombre" name="nombre" required />
-          </div>
+        <div class="confirmacion-form-wrapper" style="display:none;">
+          <form id="formulario-rsvp" class="pink-form">
+            <div class="input-group-pink">
+              <label for="nombre">Nombre Completo</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Nombres" required />
+            </div>
 
-          <div class="input-group">
-            <label for="alergias">Intolerancias / Alergias</label>
-            <input type="text" id="alergias" name="alergias" required />
-          </div>
+            <div class="input-group-pink">
+              <label for="alergias">Alergias / Intolerancias</label>
+              <input type="text" id="alergias" name="alergias" placeholder="Indicar aquí" required />
+            </div>
 
-          <div class="input-group">
-            <label for="asistencia">¿Podrás asistir?</label>
-            <div class="select-wrapper">
+            <div class="input-group-pink">
+              <label for="asistencia">Asistencia</label>
               <select id="asistencia" name="asistencia" required>
                 <option value="">Seleccionar...</option>
-                <option value="Sí">Sí, allí estaré</option>
-                <option value="No">Lo siento, no podré</option>
+                <option value="Sí">Sí, asistiré</option>
+                <option value="No">No podré asistir</option>
               </select>
             </div>
-          </div>
 
-          <button type="submit" class="btn-solid full-width">Enviar</button>
-        </form>
+            <button type="submit" class="btn-pink-solid full-width">Enviar Confirmación</button>
+          </form>
+        </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="site-footer">
-      <span class="footer-names">José & Paola</span>
-      <span class="footer-date">2026</span>
+    <footer class="site-footer-pink">
+      <p>Con cariño, José & Paola</p>
+      <div class="small-date">18 . 07 . 2026</div>
     </footer>
 
   </main>
