@@ -1,42 +1,22 @@
 /* =========================================
-   Reset & Variables - "Etherial Elegance"
+   RESET & BASICS
    ========================================= */
 :root {
-  /* Paleta de Colores - Dusty Rose & Champagne Gold */
   --gold: #C59D5F;
   --gold-light: #E0C088;
   --rose: #D4889E;
-  --rose-dust: #E6B3C3;
   --bg-color: #F9F5F6;
-  /* Casi blanco, muy cálido */
   --text-dark: #2C2426;
   --text-muted: #6B5B5E;
   --white: #ffffff;
 
-  /* Gradientes */
-  --gradient-hero: linear-gradient(to bottom, rgba(44, 36, 38, 0.3), rgba(44, 36, 38, 0.1));
-  --gradient-gold: linear-gradient(135deg, #C59D5F 0%, #E0C088 100%);
+  --font-heading: 'Great Vibes', cursive;
+  --font-body: 'Playfair Display', serif;
 
-  /* Tipografía */
-  --font-display: 'Great Vibes', cursive;
-  --font-serif: 'Playfair Display', serif;
-
-  /* Espaciado */
-  --spacing-xs: 8px;
-  --spacing-sm: 16px;
-  --spacing-md: 32px;
-  --spacing-lg: 64px;
-  --spacing-xl: 120px;
-
-  /* UI Elements */
-  --radius: 4px;
-  /* Bordes más rectos para elegancia */
-  --shadow-card: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
 
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -44,81 +24,60 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-dark);
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   line-height: 1.6;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+  margin: 0;
 }
 
 img {
   max-width: 100%;
-  display: block;
   height: auto;
+  display: block;
 }
 
-h1,
-h2,
-h3 {
-  font-weight: 400;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* =========================================
-   Utilidades & Animaciones
+   UTILITIES
    ========================================= */
 .fade-up {
+  animation: fadeUp 1s ease-out forwards;
   opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUpReveal 1.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  transform: translateY(20px);
 }
 
-@keyframes fadeUpReveal {
+@keyframes fadeUp {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Delays para secuencia */
-section:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-section:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
 /* =========================================
-   Carta / Portada (Legacy ID preservado)
+   PORTADA (COVER)
    ========================================= */
 .portada {
   position: fixed;
-  inset: 0;
-  background: #FDFBFB;
-  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 10000;
   display: flex;
-  align-items: center;
   justify-content: center;
-  transition: opacity 1.5s ease;
-}
-
-.carta-tapa {
+  align-items: center;
+  flex-direction: column;
   text-align: center;
-  padding: 40px;
-}
-
-.carta-tapa h1 {
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  color: var(--gold);
-  margin-bottom: 2rem;
-  line-height: 1.4;
-  max-width: 500px;
+  transition: opacity 1s ease;
 }
 
 .portada.animar-carta {
@@ -126,16 +85,23 @@ section:nth-child(3) {
   pointer-events: none;
 }
 
+.carta-tapa h1 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--gold);
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
 #abrir-carta {
+  padding: 15px 40px;
   background: transparent;
   border: 1px solid var(--text-dark);
-  color: var(--text-dark);
-  padding: 12px 30px;
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   text-transform: uppercase;
   letter-spacing: 2px;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: all 0.3s;
 }
 
 #abrir-carta:hover {
@@ -144,215 +110,159 @@ section:nth-child(3) {
 }
 
 /* =========================================
-   HERO SECTION (Full Screen)
+   HERO SECTION
    ========================================= */
 .hero-section {
-  position: relative;
   height: 100vh;
-  /* Pantalla completa */
-  width: 100%;
-  overflow: hidden;
+  position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
+  overflow: hidden;
 }
 
 .hero-bg {
   position: absolute;
-  inset: 0;
-  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 .hero-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%;
-  /* Ajustar para ver caras si es posible */
 }
 
 .overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(255, 255, 255, 0.3);
-  /* Capa clara para resaltar texto oscuro u opuesta */
-  /* Para elegancia, a veces oscurecer es mejor si el texto es blanco. 
-       Aquí usaremos texto oscuro sobre imagen clara o viceversa.
-       Vamos a asumir imagen clara estilo boda: */
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.6));
 }
 
 .hero-content {
-  position: relative;
-  z-index: 10;
+  z-index: 2;
   padding: 20px;
 }
 
 .pre-title {
-  font-size: 1.2rem;
   text-transform: uppercase;
-  letter-spacing: 6px;
-  margin-bottom: 10px;
-  color: var(--text-muted);
+  letter-spacing: 5px;
+  margin-bottom: 20px;
 }
 
-h1.nombre-pareja-hero {
-  font-family: var(--font-display);
-  font-size: clamp(4rem, 10vw, 9rem);
-  /* Responsive gigante */
+.nombre-pareja-hero {
+  font-family: var(--font-heading);
+  font-size: 6rem;
   color: var(--rose);
-  line-height: 1;
+  line-height: 1.1;
   margin-bottom: 20px;
-  text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
-  transform: rotate(-3deg);
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
 }
 
 .hero-date {
   font-size: 1.5rem;
-  letter-spacing: 8px;
+  letter-spacing: 5px;
   font-weight: 700;
-  color: var(--text-dark);
 }
 
 .scroll-indicator {
   position: absolute;
-  bottom: 40px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  opacity: 0.7;
   animation: bounce 2s infinite;
-}
-
-.scroll-indicator span {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  opacity: 0.7;
 }
 
 @keyframes bounce {
 
   0%,
-  20%,
-  50%,
-  80%,
   100% {
-    transform: translateX(-50%) translateY(0);
+    transform: translate(-50%, 0);
   }
 
-  40% {
-    transform: translateX(-50%) translateY(-10px);
-  }
-
-  60% {
-    transform: translateX(-50%) translateY(-5px);
+  50% {
+    transform: translate(-50%, -10px);
   }
 }
 
-
 /* =========================================
-   Container Principal (Editorial)
+   EDITORIAL CONTENT
    ========================================= */
 .editorial-container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: var(--spacing-xl) 20px;
+  padding: 100px 20px;
   background: var(--bg-color);
 }
 
-/* =========================================
-   Intro & Cuenta Atrás Minimal
-   ========================================= */
-.intro-section {
-  text-align: center;
-  margin-bottom: var(--spacing-xl);
-}
-
 .quote-block p {
-  font-size: 2rem;
-  font-style: italic;
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
   color: var(--gold);
-  font-family: var(--font-display);
-  margin-bottom: 40px;
+  text-align: center;
+  margin-bottom: 50px;
 }
 
+/* Countdown */
 .cuenta-atras-minimal {
-  border-top: 1px solid var(--gold-light);
-  border-bottom: 1px solid var(--gold-light);
-  padding: 30px 0;
-  display: inline-block;
-  width: 100%;
-  max-width: 600px;
+  border-top: 1px solid var(--gold);
+  border-bottom: 1px solid var(--gold);
+  padding: 40px 0;
+  margin-bottom: 80px;
+  text-align: center;
 }
 
 #contador {
   display: flex;
   justify-content: center;
-  gap: 30px;
-  font-variant-numeric: tabular-nums;
-}
-
-.bloque-cuenta {
-  display: flex;
-  flex-direction: column;
+  gap: 40px;
 }
 
 .numero-cuenta {
-  font-size: 2.5rem;
-  color: var(--text-dark);
-  font-weight: 700;
+  font-size: 3rem;
+  font-weight: bold;
+  display: block;
 }
 
 .unidad-cuenta {
-  font-size: 0.75rem;
   text-transform: uppercase;
+  font-size: 0.8rem;
   letter-spacing: 2px;
-  color: var(--text-muted);
 }
 
-/* =========================================
-   Locations (Grid Asimétrica)
-   ========================================= */
+/* Locations */
 .locations-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* 3 column layout for desktop */
-  gap: 30px;
-  margin-bottom: var(--spacing-xl);
+  gap: 40px;
+  margin-bottom: 100px;
 }
 
 .location-card {
-  background: var(--white);
+  background: #fff;
   padding: 40px;
+  box-shadow: var(--shadow-soft);
   text-align: center;
-  transition: transform 0.5s ease;
-  border: 1px solid transparent;
+  transition: transform 0.3s;
 }
 
 .location-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--gold-light);
-  box-shadow: var(--shadow-card);
-}
-
-.location-card.church {
-  margin-top: 0;
+  transform: translateY(-5px);
 }
 
 .location-card.venue {
-  margin-top: 60px;
-  /* Efecto escalonado */
+  margin-top: 50px;
 }
 
-.location-card.hotel {
-  margin-top: 0;
-}
-
-.loc-icon {
+.loc-icon i {
   font-size: 2rem;
   color: var(--gold);
   margin-bottom: 20px;
@@ -360,57 +270,34 @@ h1.nombre-pareja-hero {
 
 .location-card h3 {
   font-size: 1.5rem;
-  margin-bottom: 10px;
-  font-style: italic;
-}
-
-.loc-detail {
-  color: var(--text-muted);
-  margin-bottom: 20px;
-  font-size: 0.95rem;
+  margin-bottom: 15px;
+  font-family: var(--font-body);
 }
 
 .btn-minimal {
-  display: inline-block;
-  text-decoration: none;
-  color: var(--text-dark);
-  border-bottom: 1px solid var(--text-dark);
-  padding-bottom: 2px;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: color 0.3s;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
 }
 
-.btn-minimal:hover {
-  color: var(--rose);
-  border-color: var(--rose);
-}
-
-/* =========================================
-   Timeline Vertical Clean
-   ========================================= */
+/* Timeline */
 .timeline-clean {
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: 100px;
   text-align: center;
 }
 
 .section-title {
-  font-size: 3rem;
-  font-family: var(--font-display);
-  color: var(--text-dark);
-  margin-bottom: 60px;
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  margin-bottom: 50px;
 }
 
 .timeline-wrapper {
   position: relative;
   max-width: 600px;
   margin: 0 auto;
-  padding-left: 20px;
-  /* Espacio para visuales */
+  padding: 20px 0;
 }
 
-/* Línea vertical sutil */
 .timeline-wrapper::before {
   content: '';
   position: absolute;
@@ -418,89 +305,59 @@ h1.nombre-pareja-hero {
   top: 0;
   bottom: 0;
   width: 1px;
-  background: var(--gold-light);
-  opacity: 0.5;
+  background: var(--gold);
 }
 
 .timeline-item {
-  position: relative;
-  margin-bottom: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 40px;
+  position: relative;
 }
 
 .timeline-item .time {
-  position: absolute;
-  left: 0;
-  width: 40%;
+  width: 45%;
   text-align: right;
   padding-right: 30px;
-  font-family: var(--font-display);
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: var(--rose);
+  font-style: italic;
 }
 
 .timeline-item .desc {
-  position: absolute;
-  right: 0;
-  width: 40%;
+  width: 45%;
   text-align: left;
   padding-left: 30px;
 }
 
 .timeline-item .marker {
-  width: 12px;
-  height: 12px;
-  background: var(--white);
+  width: 15px;
+  height: 15px;
+  background: #fff;
   border: 2px solid var(--gold);
   border-radius: 50%;
-  z-index: 2;
+  z-index: 5;
 }
 
-.timeline-item h3 {
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 5px;
-}
-
-.timeline-item p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  font-style: italic;
-}
-
-/* Invertir alternancia visualmente si se desea, o mantener simple central */
-
-/* =========================================
-   Galería Editorial
-   ========================================= */
-.gallery-editorial {
-  margin-bottom: var(--spacing-xl);
-}
-
+/* Gallery */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  margin-bottom: 100px;
 }
 
-.gallery-grid figure {
-  margin: 0;
-  overflow: hidden;
-}
-
-.gallery-grid figure img {
+.gallery-grid img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.8s ease;
-  filter: grayscale(20%);
+  transition: transform 0.5s;
+  filter: grayscale(10%);
 }
 
-.gallery-grid figure:hover img {
-  transform: scale(1.05);
+.gallery-grid img:hover {
+  transform: scale(1.03);
   filter: grayscale(0%);
 }
 
@@ -510,123 +367,64 @@ h1.nombre-pareja-hero {
 }
 
 .gallery-grid .tall {
-  height: 500px;
+  height: 600px;
 }
 
-
-/* =========================================
-   RSVP Section
-   ========================================= */
+/* RSVP */
 .rsvp-trigger {
   text-align: center;
-  padding: 80px 0;
-  background: var(--white);
-  border: 1px solid var(--gold-light);
-  margin: 0 auto;
-  max-width: 800px;
-}
-
-.rsvp-trigger p {
-  font-size: 1.5rem;
-  font-family: var(--font-display);
-  color: var(--text-muted);
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .btn-gold {
-  background: var(--gradient-gold);
-  color: var(--white);
+  background: var(--gold);
+  color: #fff;
   border: none;
-  padding: 16px 48px;
-  font-size: 1rem;
+  padding: 20px 50px;
+  font-size: 1.1rem;
+  cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 2px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.btn-gold:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(197, 157, 95, 0.3);
 }
 
 .confirmacion {
   max-width: 600px;
-  margin: 40px auto;
-  background: var(--white);
+  margin: 0 auto;
+  background: #fff;
   padding: 50px;
-  box-shadow: var(--shadow-card);
   text-align: center;
-}
-
-.confirmacion h2 {
-  font-family: var(--font-display);
-  font-size: 3rem;
-  margin-bottom: 40px;
-  color: var(--rose);
+  box-shadow: var(--shadow-soft);
 }
 
 .form-group {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: left;
-}
-
-.form-group label {
-  display: block;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-  color: var(--text-muted);
 }
 
 .form-group input,
 .form-group select {
   width: 100%;
   padding: 15px;
-  border: 1px solid #ddd;
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  background: #fafafa;
-  transition: border-color 0.3s;
+  border: 1px solid #ccc;
 }
 
-.form-group input:focus {
-  outline: none;
-  border-color: var(--gold);
-}
-
-/* =========================================
-   Footer
-   ========================================= */
+/* Footer */
 footer {
   text-align: center;
-  margin-top: 80px;
-  padding-top: 40px;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.footer-logo {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  color: var(--gold);
-  margin-bottom: 10px;
-}
-
-footer p {
-  font-size: 0.9rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  margin-top: 50px;
   color: var(--text-muted);
 }
 
-/* =========================================
-   Responsividad
-   ========================================= */
+.footer-logo {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: var(--gold);
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  h1.nombre-pareja-hero {
+  .nombre-pareja-hero {
     font-size: 4rem;
-    transform: rotate(0);
   }
 
   .locations-grid {
@@ -637,55 +435,24 @@ footer p {
     margin-top: 0;
   }
 
-  .timeline-wrapper::before {
-    left: 20px;
-  }
-
   .timeline-item {
-    flex-direction: row;
-    justify-content: flex-start;
-    text-align: left;
+    flex-direction: column;
+    text-align: center;
   }
 
-  .timeline-item .time {
-    position: relative;
-    width: auto;
-    text-align: left;
-    padding-right: 0;
-    margin-right: 20px;
-    left: 40px;
-    order: 2;
-    font-size: 1.2rem;
+  .timeline-wrapper::before {
+    display: none;
+  }
+
+  .timeline-item .time,
+  .timeline-item .desc {
+    width: 100%;
+    text-align: center;
+    padding: 0;
   }
 
   .timeline-item .marker {
-    position: absolute;
-    left: 14px;
-  }
-
-  .timeline-item .desc {
-    position: relative;
-    width: auto;
-    padding-left: 0;
-    left: 40px;
-    order: 3;
-  }
-
-  /* Para que el timeline móvil funcione con flex wrap o block */
-  .timeline-item {
-    display: block;
-    padding-left: 40px;
-  }
-
-  .timeline-item .time {
-    display: block;
-    margin-bottom: 5px;
-    left: 0;
-  }
-
-  .timeline-item .desc {
-    display: block;
-    left: 0;
+    display: none;
   }
 
   .gallery-grid {
@@ -694,15 +461,7 @@ footer p {
 
   .gallery-grid .wide,
   .gallery-grid .tall {
-    height: 300px;
     grid-column: span 1;
-  }
-
-  #contador {
-    gap: 15px;
-  }
-
-  .numero-cuenta {
-    font-size: 1.8rem;
+    height: 300px;
   }
 }
