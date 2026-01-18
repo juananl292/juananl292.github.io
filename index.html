@@ -27,183 +27,159 @@
 
   <!-- Contenido principal -->
   <div class="contenido" id="contenido">
-    <div class="envoltorio">
-      <header style="position: relative;" class="fade-up">
-        <img src="img/pngwing.com.png" alt="Rama de olivo" class="rama-olivo-titulo">
-        <h1 class="nombre-pareja">José & Paola</h1>
-        <p class="subtitulo">¡Nos casamos!</p>
-      </header>
 
-      <div class="imagen-central fade-up">
-        <div class="borde-desgarrado borde-superior">
-          <svg viewBox="0 0 500 40" width="100%" height="40" preserveAspectRatio="none">
-            <path d="M0,30 Q50,0 100,30 Q150,40 200,20 Q250,0 300,30 Q350,40 400,20 Q450,0 500,30 L500,0 L0,0 Z"
-              fill="#fff" />
-          </svg>
-        </div>
-        <img src="img/enlace.jpeg" alt="Foto especial" />
-        <div class="borde-desgarrado borde-inferior">
-          <svg viewBox="0 0 500 40" width="100%" height="40" preserveAspectRatio="none">
-            <path d="M0,10 Q50,40 100,10 Q150,0 200,20 Q250,40 300,10 Q350,0 400,20 Q450,40 500,10 L500,40 L0,40 Z"
-              fill="#fff" />
-          </svg>
+    <!-- Hero Section (Fuera del 'papel' para inmersión) -->
+    <header class="hero-section fade-up" id="inicio">
+      <div class="hero-bg">
+        <img src="img/enlace.jpeg" alt="Fondo Hero" class="hero-img">
+        <div class="overlay"></div>
+      </div>
+      <div class="hero-content">
+        <p class="pre-title">¡Nos casamos!</p>
+        <h1 class="nombre-pareja-hero">José & Paola</h1>
+        <p class="hero-date">18 . 07 . 2026</p>
+        <div class="scroll-indicator">
+          <span>Descubre</span>
+          <i class="fas fa-chevron-down"></i>
         </div>
       </div>
+    </header>
 
-      <section class="cuenta-atras fade-up">
-        <div class="fecha-boda">
-          <div class="fecha-grande">
-            <span class="dia">Sábado</span>
-            <span class="diaNumero">18</span>
-            <span class="mes">JULIO</span>
+    <!-- Contenido Editorial (Estilo Revista) -->
+    <div class="editorial-container">
 
-          </div>
-          <div>
-            <span class="año">2026</span>
-          </div>
-          <p id="contador">Cargando...</p>
+      <!-- Intro & Cuenta Atrás -->
+      <section class="intro-section fade-up">
+        <div class="quote-block">
+          <p>"El amor no mira con los ojos, sino con el alma"</p>
+        </div>
+
+        <div class="cuenta-atras-minimal">
+          <div id="contador">Cargando...</div>
         </div>
       </section>
 
-      <div class="bloque-ubicacion fade-up">
-        <div class="iglesia">
-          <i class="fas fa-church"></i>
+      <!-- Ubicación (Diseño Asimétrico) -->
+      <section class="locations-grid fade-up">
+        <div class="location-card church">
+          <div class="loc-icon"><i class="fas fa-church"></i></div>
+          <h3>Ceremonia</h3>
+          <p>Iglesia de San Lorenzo</p>
+          <p class="loc-detail">Guajar</p>
+          <a class="btn-minimal" href="https://maps.app.goo.gl/dyPaWPJaokeTsVj58" target="_blank">Mapa</a>
         </div>
-        <div class="info-evento">
-          <p><strong>Iglesia:</strong> Iglesia de San Lorenzo, Guajar</p>
+
+        <div class="location-card venue">
+          <div class="loc-icon"><i class="fas fa-glass-cheers"></i></div>
+          <h3>Celebración</h3>
+          <p>Jardines Zahor</p>
+          <p class="loc-detail">Dúrcal</p>
+          <a class="btn-minimal" href="https://maps.app.goo.gl/c3paFh51qx1DP3oX9" target="_blank">Mapa</a>
         </div>
-        <div class="boton-ubi">
-          <a class="boton" href="https://maps.app.goo.gl/dyPaWPJaokeTsVj58" target="_blank">Ver ubicación</a>
-        </div>
-      </div>
-      <div class="bloque-ubicacion fade-up">
-        <div class="iglesia">
-          <i class="fas fa-church"></i>
-        </div>
-        <div class="info-evento">
-          <p><strong>Lugar:</strong> Jardines Zahor, Dúrcal</p>
-        </div>
-        <div class="boton-ubi">
-          <a class="boton" href="https://maps.app.goo.gl/c3paFh51qx1DP3oX9" target="_blank">Ver ubicación</a>
-        </div>
-      </div>
 
-      <div class="bloque-ubicacion fade-up">
-        <div class="iglesia">
-          <i class="fas fa-hotel"></i>
-        </div>
-        <div class="info-evento">
-          <p> Hoteles cercanos</p>
-        </div>
-        <div class="boton-ubi">
-          <a class="boton" href="https://maps.app.goo.gl/gsHZcyqB1p5fdayk8" target="_blank">Ver ubicación</a>
-        </div>
-      </div>
-
-      <section class="mapa-section fade-up">
-        <p>ITINERARIO DE ACTIVIDADES</p>
-        <div class="mapa">
-
-        </div>
-      </section>
-      <section class="itinerario fade-up">
-
-        <div class="linea-tiempo-alternante">
-
-          <!-- Evento 1 -->
-          <div class="evento evento-izquierda">
-            <div class="contenido">
-              <span class="hora">12:45</span>
-              <i class="fas fa-church"></i>
-              <span class="titulo">Ceremonia</span>
-            </div>
-          </div>
-
-          <!-- Evento 2 -->
-          <div class="evento evento-derecha">
-            <div class="contenido">
-              <span class="hora">14:00</span>
-              <i class="fas fa-glass-cheers"></i>
-              <span class="titulo">Cocktail</span>
-            </div>
-          </div>
-
-          <!-- Evento 3 -->
-          <div class="evento evento-izquierda">
-            <div class="contenido">
-              <span class="hora">15:30</span>
-              <i class="fas fa-utensils"></i>
-              <span class="titulo">Comida</span>
-            </div>
-          </div>
-
-          <!-- Evento 4 -->
-          <div class="evento evento-derecha">
-            <div class="contenido">
-              <span class="hora">19:00</span>
-              <i class="fas fa-music"></i>
-              <span class="titulo">Fiesta</span>
-            </div>
-          </div>
-
-          <!-- Evento 5 -->
-          <div class="evento evento-izquierda">
-            <div class="contenido">
-              <span class="hora">23:00</span>
-              <i class="fas fa-utensils"></i>
-              <span class="titulo">Cena</span>
-            </div>
-          </div>
-
+        <div class="location-card hotel">
+          <div class="loc-icon"><i class="fas fa-hotel"></i></div>
+          <h3>Alojamiento</h3>
+          <p>Hoteles Cercanos</p>
+          <a class="btn-minimal" href="https://maps.app.goo.gl/gsHZcyqB1p5fdayk8" target="_blank">Ver</a>
         </div>
       </section>
 
+      <!-- Itinerario (Timeline Vertical Limpia) -->
+      <section class="timeline-clean fade-up">
+        <h2 class="section-title">Itinerario</h2>
+        <div class="timeline-wrapper">
+          <div class="timeline-item">
+            <span class="time">12:45</span>
+            <div class="marker"></div>
+            <div class="desc">
+              <h3>Ceremonia</h3>
+              <p>El "Sí, quiero"</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="time">14:00</span>
+            <div class="marker"></div>
+            <div class="desc">
+              <h3>Cocktail</h3>
+              <p>Brindis y aperitivos</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="time">15:30</span>
+            <div class="marker"></div>
+            <div class="desc">
+              <h3>Comida</h3>
+              <p>Banquete nupcial</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="time">19:00</span>
+            <div class="marker"></div>
+            <div class="desc">
+              <h3>Fiesta</h3>
+              <p>Baile y diversión</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="time">23:00</span>
+            <div class="marker"></div>
+            <div class="desc">
+              <h3>Cena</h3>
+              <p>Recena para seguir bailando</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <div class="full-width-image fade-up">
-        <img src="img/image1.jpeg" alt="Nuestra Historia 1" loading="lazy">
-      </div>
+      <!-- Galería (Grid Editorial) -->
+      <section class="gallery-editorial fade-up">
+        <div class="gallery-grid">
+          <figure class="wide"><img src="img/image1.jpeg" alt="José y Paola" loading="lazy"></figure>
+          <figure class="tall"><img src="img/image2.jpeg" alt="Momentos" loading="lazy"></figure>
+          <figure class="tall"><img src="img/image3.jpeg" alt="Detalles" loading="lazy"></figure>
+          <figure class="wide"><img src="img/image4.jpeg" alt="Juntos" loading="lazy"></figure>
+        </div>
+      </section>
 
-      <div class="full-width-image fade-up">
-        <img src="img/image3.jpeg" alt="Nuestra Historia 2" loading="lazy">
-      </div>
-
-      <div class="full-width-image fade-up">
-        <img src="img/image2.jpeg" alt="Nuestra Historia 3" loading="lazy">
-      </div>
-
-      <div class="full-width-image fade-up">
-        <img src="img/image4.jpeg" alt="Nuestra Historia 4" loading="lazy">
-      </div>
-
-      <!-- Botón para mostrar el formulario -->
-      <div class="boton-confirmacion-centro fade-up">
-        <button id="mostrar-confirmacion" class="boton">Confirmar asistencia</button>
+      <!-- RSVP -->
+      <div class="rsvp-trigger fade-up">
+        <p>Esperamos contar contigo</p>
+        <button id="mostrar-confirmacion" class="btn-gold">Confirmar Asistencia</button>
       </div>
 
       <section class="confirmacion" style="display:none;">
-        <h2>Confirmación de asistencia</h2>
+        <h2>RSVP</h2>
         <form id="formulario-rsvp">
-          <label for="nombre">Tu nombre y el de tus acompañantes:</label>
-          <input type="text" id="nombre" name="nombre" required />
+          <div class="form-group">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tú y tus acompañantes" required />
+          </div>
 
-          <label for="alergias">¿Hay alguien con intolerancias o alergias?</label>
-          <input type="text" id="alergias" name="alergias" required />
+          <div class="form-group">
+            <label for="alergias">Alergias / Intolerancias</label>
+            <input type="text" id="alergias" name="alergias" placeholder="Indicar aquí" required />
+          </div>
 
-          <label for="asistencia">¿Vas a venir?</label>
-          <select id="asistencia" name="asistencia" required>
-            <option value="">Selecciona una opción</option>
-            <option value="Sí">Sí</option>
-            <option value="No">No</option>
-          </select>
+          <div class="form-group">
+            <label for="asistencia">Asistencia</label>
+            <select id="asistencia" name="asistencia" required>
+              <option value="">Selecciona...</option>
+              <option value="Sí">Sí, asistiré</option>
+              <option value="No">No podré asistir</option>
+            </select>
+          </div>
 
-          <button type="submit" class="boton">Enviar</button>
+          <button type="submit" class="btn-gold">Enviar Confirmación</button>
         </form>
       </section>
 
       <footer>
-        <p>Con cariño, José & Paola</p>
+        <div class="footer-logo">J & P</div>
+        <p>18 de Julio de 2026</p>
       </footer>
-    </div> <!-- Fin .envoltorio -->
+
+    </div> <!-- Fin .editorial-container -->
   </div> <!-- Fin .contenido -->
 
   <!-- Scripts -->
