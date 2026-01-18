@@ -1,4 +1,4 @@
-const ENDPOINT = "https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec";
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbyisD75GxzsyTjTM25t3GzdXUxLMe6cf66B0tirR5bRVBEAuAmG3-kKJ5YdDV2ywR4/exec";
 
 document.addEventListener("DOMContentLoaded", function () {
   // Manejar animación de la carta
