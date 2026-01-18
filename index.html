@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>¡Nos Casamos!</title>
 
   <!-- Fuentes decorativas -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap"
+    rel="stylesheet">
 
   <!-- Estilos -->
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
+
 <body>
   <!-- Carta animada -->
   <div class="portada" id="portada">
@@ -27,20 +30,22 @@
     <div class="envoltorio">
       <header style="position: relative;" class="fade-up">
         <img src="img/pngwing.com.png" alt="Rama de olivo" class="rama-olivo-titulo">
-        <h1 class="nombre-pareja">Juan & Gema</h1>
+        <h1 class="nombre-pareja">José & Paola</h1>
         <p class="subtitulo">¡Nos casamos!</p>
       </header>
-      
+
       <div class="imagen-central fade-up">
         <div class="borde-desgarrado borde-superior">
           <svg viewBox="0 0 500 40" width="100%" height="40" preserveAspectRatio="none">
-            <path d="M0,30 Q50,0 100,30 Q150,40 200,20 Q250,0 300,30 Q350,40 400,20 Q450,0 500,30 L500,0 L0,0 Z" fill="#fff"/>
+            <path d="M0,30 Q50,0 100,30 Q150,40 200,20 Q250,0 300,30 Q350,40 400,20 Q450,0 500,30 L500,0 L0,0 Z"
+              fill="#fff" />
           </svg>
         </div>
         <img src="img/enlace.PNG" alt="Foto especial" />
         <div class="borde-desgarrado borde-inferior">
           <svg viewBox="0 0 500 40" width="100%" height="40" preserveAspectRatio="none">
-            <path d="M0,10 Q50,40 100,10 Q150,0 200,20 Q250,40 300,10 Q350,0 400,20 Q450,40 500,10 L500,40 L0,40 Z" fill="#fff"/>
+            <path d="M0,10 Q50,40 100,10 Q150,0 200,20 Q250,40 300,10 Q350,0 400,20 Q450,40 500,10 L500,40 L0,40 Z"
+              fill="#fff" />
           </svg>
         </div>
       </div>
@@ -49,17 +54,17 @@
         <div class="fecha-boda">
           <div class="fecha-grande">
             <span class="dia">Sábado</span>
-            <span class="diaNumero">04</span>
-            <span class="mes">OCTUBRE</span>
-            
+            <span class="diaNumero">18</span>
+            <span class="mes">JULIO</span>
+
           </div>
           <div>
-            <span class="año">2025</span>
+            <span class="año">2026</span>
           </div>
           <p id="contador">Cargando...</p>
         </div>
       </section>
-      
+
       <div class="bloque-ubicacion fade-up">
         <div class="iglesia">
           <i class="fas fa-church"></i>
@@ -87,13 +92,13 @@
       <section class="mapa-section fade-up">
         <p>ITINERARIO DE ACTIVIDADES</p>
         <div class="mapa">
-         
+
         </div>
       </section>
       <section class="itinerario fade-up">
-        
+
         <div class="linea-tiempo-alternante">
-      
+
           <!-- Evento 1 -->
           <div class="evento evento-izquierda">
             <div class="contenido">
@@ -102,7 +107,7 @@
               <span class="titulo">Ceremonia</span>
             </div>
           </div>
-      
+
           <!-- Evento 2 -->
           <div class="evento evento-derecha">
             <div class="contenido">
@@ -111,7 +116,7 @@
               <span class="titulo">Cocktail</span>
             </div>
           </div>
-      
+
           <!-- Evento 3 -->
           <div class="evento evento-izquierda">
             <div class="contenido">
@@ -120,7 +125,7 @@
               <span class="titulo">Comida</span>
             </div>
           </div>
-      
+
           <!-- Evento 4 -->
           <div class="evento evento-derecha">
             <div class="contenido">
@@ -130,7 +135,7 @@
             </div>
           </div>
 
-           <!-- Evento 5 -->
+          <!-- Evento 5 -->
           <div class="evento evento-izquierda">
             <div class="contenido">
               <span class="hora">23:00</span>
@@ -138,20 +143,20 @@
               <span class="titulo">Cena</span>
             </div>
           </div>
-      
+
         </div>
       </section>
-      
-      
+
+
       <section class="image-1">
       </section>
-      
+
       <section class="image-2">
       </section>
-      
+
       <section class="image-3">
       </section>
-      
+
       <section class="image-4">
       </section>
 
@@ -166,7 +171,7 @@
           <label for="nombre">Tu nombre y el de tus acompañantes:</label>
           <input type="text" id="nombre" name="nombre" required />
 
-            <label for="alergias">¿Hay alguien con intolerancias o alergias?</label>
+          <label for="alergias">¿Hay alguien con intolerancias o alergias?</label>
           <input type="text" id="alergias" name="alergias" required />
 
           <label for="asistencia">¿Vas a venir?</label>
@@ -181,7 +186,7 @@
       </section>
 
       <footer>
-        <p>Con cariño, Juan & Gema</p>
+        <p>Con cariño, José & Paola</p>
       </footer>
     </div> <!-- Fin .envoltorio -->
   </div> <!-- Fin .contenido -->
@@ -198,7 +203,7 @@
     });
 
     // Cuenta atrás
-    const fechaBoda = new Date('2025-10-04T13:00:00').getTime();
+    const fechaBoda = new Date('2026-07-18T13:00:00').getTime();
     const contadorEl = document.getElementById('contador');
 
     function actualizarCuentaAtras() {
@@ -228,12 +233,12 @@
     actualizarCuentaAtras();
 
     // Envío del formulario
-   document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
+    document.getElementById("formulario-rsvp").addEventListener("submit", function (e) {
       e.preventDefault();
 
       const nombre = document.getElementById("nombre").value + " :: " + document.getElementById("alergias").value;
       const asistencia = document.getElementById("asistencia").value;
-      
+
 
       fetch("https://script.google.com/macros/s/AKfycbwZK-lZznKhaLhRnj24xLQ6SbfYrCvcO0ZMIswT16Dh2V9SFp5JZrDGsd8p_v6AK9Ji/exec", {
         method: "POST",
@@ -243,14 +248,14 @@
         },
         body: JSON.stringify({ nombre, asistencia }),
       })
-      .then(() => {
-        alert("¡Gracias por confirmar tu asistencia!");
-        document.getElementById("formulario-rsvp").reset();
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        alert("Hubo un problema al enviar tu confirmación.");
-      });
+        .then(() => {
+          alert("¡Gracias por confirmar tu asistencia!");
+          document.getElementById("formulario-rsvp").reset();
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("Hubo un problema al enviar tu confirmación.");
+        });
     });
 
     // Mostrar formulario de confirmación
@@ -261,4 +266,5 @@
   </script>
   <script src="scripts.js"></script>
 </body>
+
 </html>
