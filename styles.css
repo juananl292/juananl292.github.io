@@ -127,7 +127,8 @@ h3 {
    ========================================= */
 .hero-parallax {
   height: 100vh;
-  height: 100dvh; /* Dynamic viewport height para evitar saltos en móvil al scrollear */
+  height: 100dvh;
+  /* Dynamic viewport height para evitar saltos en móvil al scrollear */
   position: relative;
   display: flex;
   justify-content: center;
@@ -142,17 +143,7 @@ h3 {
   inset: 0;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  /* Parallax effect */
   z-index: 1;
-}
-
-/* Solución para el bug de iOS/Safari en móviles que causa un zoom desproporcionado */
-@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
-  .parallax-bg {
-    background-attachment: scroll;
-    /* Al quitar el fixed, recuperamos el comportamiento normal y fluido en móviles */
-  }
 }
 
 .hero-overlay-gradient {
